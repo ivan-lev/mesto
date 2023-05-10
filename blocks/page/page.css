@@ -1,0 +1,9 @@
+.page {
+  width: 1280px;
+  margin: 0 auto;
+  padding: 45px 200px 60px;
+  background-color: #000;
+  color: white;
+  font-family: 'Inter';
+  font-style: normal;
+}

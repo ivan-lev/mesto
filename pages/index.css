@@ -1,0 +1,8 @@
+/* ======= VENDOR SYLES AND FONTS ======= */
+
+@import url(../vendor/fonts.css);
+@import url(../vendor/normalize.css);
+
+/* ======= PAGE STYLES ======= */
+
+@import url(../blocks/page/page.css);
