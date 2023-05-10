@@ -1,5 +1,5 @@
 .page {
-  width: 1280px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 45px 200px 60px;
   background-color: #000;
@@ -7,4 +7,17 @@
   font-family: 'Inter';
   font-style: normal;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+  .page {
+    padding: 45px 100px 60px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .page {
+    margin: 0;
+    padding: 28px 0 36px;
+  }
 }
