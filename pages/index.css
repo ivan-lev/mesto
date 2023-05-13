@@ -1,10 +1,29 @@
 /* ======= VENDOR SYLES AND FONTS ======= */
 
-@import url(../vendor/fonts.css);
-@import url(../vendor/normalize.css);
+@import url('../vendor/fonts.css');
+@import url('../vendor/normalize.css');
 
 /* ======= PAGE STYLES ======= */
 
-@import url(../blocks/page/page.css);
-@import url(../blocks/header/header.css);
-@import url(../blocks/logo/logo.css);
+@import url('../blocks/page/page.css');
+
+/* ======= HEADER STYLES ======= */
+
+@import url('../blocks/header/header.css');
+@import url('../blocks/logo/logo.css');
+
+/* ======= PROFILE STYLES ======= */
+
+@import url('../blocks/profile/profile.css');
+@import url('../blocks/profile/__avatar/profile__avatar.css');
+@import url('../blocks/profile/__info/profile_info.css');
+@import url('../blocks/profile/__username/profile__username.css');
+@import url('../blocks/profile/__edit-button/profile__edit-button.css');
+@import url('../blocks/profile/__about/profile__about.css');
+@import url('../blocks/profile/__add-button/profile__add-button.css');
+@import url('../blocks/');
+@import url('../blocks/');
+@import url('../blocks/');
+@import url('../blocks/');
+@import url('../blocks/');
+@import url('../blocks/');
