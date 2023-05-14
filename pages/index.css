@@ -21,9 +21,16 @@
 @import url('../blocks/profile/__edit-button/profile__edit-button.css');
 @import url('../blocks/profile/__about/profile__about.css');
 @import url('../blocks/profile/__add-button/profile__add-button.css');
-@import url('../blocks/');
-@import url('../blocks/');
-@import url('../blocks/');
-@import url('../blocks/');
-@import url('../blocks/');
-@import url('../blocks/');
+
+/* ======= ELEMENTS STYLES ======= */
+
+@import url('../blocks/elements/elements.css');
+@import url('../blocks/elements/__card/elements__card.css');
+@import url('../blocks/elements/__photo/elements__photo.css');
+@import url('../blocks/elements/__description/elements__description.css');
+@import url('../blocks/elements/__photo-name/elements__photo-name.css');
+@import url('../blocks/elements/__like-button/elements__like-button.css');
+
+/* ======= FOOTER STYLES ======= */
+
+@import url('../blocks/footer/footer.css');

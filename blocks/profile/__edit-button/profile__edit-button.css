@@ -13,6 +13,7 @@
   position: absolute;
   right: -42px;
   top: 16px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1279px) {
