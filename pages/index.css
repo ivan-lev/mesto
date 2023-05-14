@@ -31,6 +31,16 @@
 @import url('../blocks/elements/__photo-name/elements__photo-name.css');
 @import url('../blocks/elements/__like-button/elements__like-button.css');
 
+/* ======= POPUP STYLES ======= */
+
+@import url('../blocks/popup/popup.css');
+@import url('../blocks/popup/__container/popup_container.css');
+@import url('../blocks/popup/__header/popup__header.css');
+@import url('../blocks/popup/__authot-name/popup__author-name.css');
+@import url('../blocks/popup/__author-about/popup__author-about.css');
+@import url('../blocks/popup/__submit-button/popup__submit-button.css');
+@import url('../blocks/popup/__close-button/popup__close-button.css');
+
 /* ======= FOOTER STYLES ======= */
 
 @import url('../blocks/footer/footer.css');

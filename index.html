@@ -23,7 +23,11 @@
 
       <section class="elements">
         <div class="elements__card">
-          <img src="./images/image-karachaevsk.jpg" alt="Фото Карачаевска" class="elements__photo"></img>
+          <img
+            src="./images/image-karachaevsk.jpg"
+            alt="Фото Карачаевска"
+            class="elements__photo"
+          />
           <div class="elements__description">
             <p class="elements__photo-name">Карачаевск</p>
             <button class="elements__like-button"></button>
@@ -31,46 +35,60 @@
         </div>
 
         <div class="elements__card">
-            <img src="./images/image-elbrus.jpg" alt="Фото Эльбруса" class="elements__photo"></img>
-            <div class="elements__description">
-              <p class="elements__photo-name">Гора Эльбрус</p>
-              <button class="elements__like-button"></button>
-            </div>
+          <img src="./images/image-elbrus.jpg" alt="Фото Эльбруса" class="elements__photo" />
+          <div class="elements__description">
+            <p class="elements__photo-name">Гора Эльбрус</p>
+            <button class="elements__like-button"></button>
           </div>
+        </div>
 
-          <div class="elements__card">
-            <img src="./images/image-dombai.jpg" alt="Фото Домбая" class="elements__photo"></img>
-            <div class="elements__description">
-              <p class="elements__photo-name">Домбай</p>
-              <button class="elements__like-button"></button>
-            </div>
+        <div class="elements__card">
+          <img src="./images/image-dombai.jpg" alt="Фото Домбая" class="elements__photo" />
+          <div class="elements__description">
+            <p class="elements__photo-name">Домбай</p>
+            <button class="elements__like-button"></button>
           </div>
+        </div>
 
-          <div class="elements__card">
-            <img src="./images/image-elbrus.jpg" alt="Фото Эльбруса" class="elements__photo"></img>
-            <div class="elements__description">
-              <p class="elements__photo-name">Гора Эльбрус</p>
-              <button class="elements__like-button"></button>
-            </div>
+        <div class="elements__card">
+          <img src="./images/image-elbrus.jpg" alt="Фото Эльбруса" class="elements__photo" />
+          <div class="elements__description">
+            <p class="elements__photo-name">Гора Эльбрус</p>
+            <button class="elements__like-button"></button>
           </div>
+        </div>
 
-          <div class="elements__card">
-            <img src="./images/image-dombai.jpg" alt="Фото Домбая" class="elements__photo"></img>
-            <div class="elements__description">
-              <p class="elements__photo-name">Домбай</p>
-              <button class="elements__like-button"></button>
-            </div>
+        <div class="elements__card">
+          <img src="./images/image-dombai.jpg" alt="Фото Домбая" class="elements__photo" />
+          <div class="elements__description">
+            <p class="elements__photo-name">Домбай</p>
+            <button class="elements__like-button"></button>
           </div>
+        </div>
 
-          <div class="elements__card">
-            <img src="./images/image-karachaevsk.jpg" alt="Фото Карачаевска" class="elements__photo"></img>
-            <div class="elements__description">
-              <p class="elements__photo-name">Карачаево-Черкесск</p>
-              <button class="elements__like-button"></button>
-            </div>
+        <div class="elements__card">
+          <img
+            src="./images/image-karachaevsk.jpg"
+            alt="Фото Карачаевска"
+            class="elements__photo"
+          />
+          <div class="elements__description">
+            <p class="elements__photo-name">Карачаево-Черкесск</p>
+            <button class="elements__like-button"></button>
           </div>
-
+        </div>
       </section>
+
+      <div class="popup">
+        <form class="popup__container">
+          <p class="popup__header">Редактировать профиль</p>
+          <input type="text" name="author-name" id="name" required class="popup__author-name" />
+          <input type="text" name="author-about" id="name" class="popup__author-about" />
+          <button type="submit" class="popup__submit-button">Сохранить</button>
+          <button class="popup__close-button"></button>
+        </form>
+      </div>
+    </main>
 
     <footer class="footer">© 2020 Mesto Russia</footer>
   </body>
