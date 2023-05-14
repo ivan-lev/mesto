@@ -9,8 +9,13 @@
   background-repeat: no-repeat;
   background-color: #000;
   border: 1px solid white;
+  border-radius: 2px;
   box-sizing: border-box;
   cursor: pointer;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 767px) {
