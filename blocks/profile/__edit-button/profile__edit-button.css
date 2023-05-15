@@ -10,29 +10,19 @@
   background-color: #000;
   border: 1px solid white;
   box-sizing: border-box;
-  position: absolute;
-  right: -42px;
-  top: 16px;
   cursor: pointer;
+  align-self: center;
 }
 
 .profile__edit-button:hover {
   opacity: 0.6;
 }
 
-@media screen and (max-width: 1279px) {
-  .profile__edit-button {
-    width: 18px;
-    height: 18px;
-    right: -28px;
-    top: 8px;
-  }
-}
-
 @media screen and (max-width: 767px) {
   .profile__edit-button {
     width: 18px;
     height: 18px;
+    position: absolute;
     right: -28px;
     top: 8px;
   }
