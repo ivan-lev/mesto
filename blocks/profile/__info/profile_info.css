@@ -2,11 +2,13 @@
   align-self: flex-start;
   margin-top: 22px;
   position: relative;
+  max-width: 480px;
 }
 
 @media screen and (max-width: 767px) {
   .profile__info {
     align-self: inherit;
     margin-top: 26px;
+    max-width: calc(100% - 26px - 18px);
   }
 }

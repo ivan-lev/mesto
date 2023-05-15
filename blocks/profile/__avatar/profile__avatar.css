@@ -5,4 +5,5 @@
   background-image: url('../../../images/avatar.jpg');
   background-size: 140%;
   background-position: center;
+  flex-shrink: 0;
 }

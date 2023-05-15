@@ -12,6 +12,7 @@
   border-radius: 2px;
   box-sizing: border-box;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .profile__add-button:hover {

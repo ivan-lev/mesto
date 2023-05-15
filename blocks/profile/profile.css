@@ -3,12 +3,13 @@
   gap: 30px;
   align-items: center;
   padding-top: 40px;
+  max-width: calc(100% - 36px);
 }
 
 @media screen and (max-width: 767px) {
   .profile {
     flex-direction: column;
-    padding-top: 42px;
+    padding: 42px 19px 0;
     gap: 0;
   }
 }

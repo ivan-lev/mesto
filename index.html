@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css" />
+    <script src="./blocks/popup/popup.js" defer></script>
   </head>
   <body class="page">
     <header class="header"><a href="#" class="logo"></a></header>
@@ -80,19 +81,15 @@
       </section>
 
       <div class="popup">
-        <form class="popup__container">
-          <p class="popup__header">Редактировать профиль</p>
-          <input
-            type="text"
-            name="author-name"
-            id="author-name"
-            required
-            class="popup__author-name"
-          />
-          <input type="text" name="author-about" id="author-about" class="popup__author-about" />
-          <button type="submit" class="popup__submit-button">Сохранить</button>
+        <div class="popup__container">
+          <form class="popup__form">
+            <p class="popup__header">Редактировать профиль</p>
+            <input type="text" name="author-name" class="popup__author-name" />
+            <input type="text" name="author-about" class="popup__author-about" />
+            <button type="submit" class="popup__submit-button">Сохранить</button>
+          </form>
           <button class="popup__close-button"></button>
-        </form>
+        </div>
       </div>
     </main>
 
