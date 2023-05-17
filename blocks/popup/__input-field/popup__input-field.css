@@ -6,3 +6,21 @@
   padding-bottom: 10px;
   box-sizing: border-box;
 }
+
+.popup__input-field:first-child {
+  margin-top: 50px;
+}
+
+.popup__input-field:nth-child(2) {
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__input-field {
+    padding-bottom: 8px;
+  }
+
+  .popup__input-field:first-child {
+    margin-top: 75px;
+  }
+}
