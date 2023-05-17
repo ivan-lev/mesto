@@ -4,7 +4,7 @@
   padding: 45px 200px 60px;
   background-color: #000;
   color: white;
-  font-family: 'Inter';
+  font-family: 'Inter', 'Roboto', 'Open Sans', sans-serif;
   font-style: normal;
   box-sizing: border-box;
 }

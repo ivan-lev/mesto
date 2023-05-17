@@ -2,15 +2,10 @@
   width: 24px;
   height: 24px;
   margin-left: auto;
-  padding: 0;
   background-image: url('../../../images/button-edit.svg');
-  background-position: center;
   background-size: 10px;
-  background-repeat: no-repeat;
   background-color: #000;
-  border: 1px solid white;
-  box-sizing: border-box;
-  cursor: pointer;
+  border: 1px solid #fff;
   align-self: center;
 }
 
@@ -22,8 +17,5 @@
   .profile__edit-button {
     width: 18px;
     height: 18px;
-    position: absolute;
-    right: -28px;
-    top: 8px;
   }
 }

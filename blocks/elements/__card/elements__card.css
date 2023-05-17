@@ -1,8 +1,6 @@
 .elements__card {
   border-radius: 10px;
   overflow: hidden;
-  height: 361px;
   background: #fff;
-  max-width: 282px;
   line-height: 0;
 }

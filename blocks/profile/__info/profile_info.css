@@ -7,20 +7,11 @@
   column-gap: 18px;
 }
 
-/* @media screen and (max-width: 767px) {
-  .profile__info {
-    grid-template-columns: 1fr 24px;
-    column-gap: 10px;
-    margin: 26px auto 0;
-  }
-} */
-
 @media screen and (max-width: 767px) {
   .profile__info {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 18px;
     column-gap: 10px;
     margin: 26px auto 0;
-    position: relative;
-    max-width: calc(100% - 50px);
+    padding-left: 28px;
   }
 }
