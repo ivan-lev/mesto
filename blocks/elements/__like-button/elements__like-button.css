@@ -1,11 +1,10 @@
 .elements__like-button {
   width: 22px;
   height: 19px;
-  background: url('../../../images/button-heart.svg') no-repeat center;
+  background: url('../../../images/button-heart.svg');
   background-size: 100%;
   border: 0;
   margin-left: auto;
-  cursor: pointer;
 }
 
 .elements__like-button:hover {
@@ -14,5 +13,5 @@
 
 .elements__like-button:active {
   opacity: 1;
-  background: url('../../../images/button-heart_active.svg') no-repeat center;
+  background: url('../../../images/button-heart_active.svg');
 }

@@ -3,10 +3,10 @@ const closePopupButton = document.querySelector('.popup__close-button');
 const popupWindow = document.querySelector('.popup');
 const popupForm = document.querySelector('.popup__form');
 
-const authorName = document.querySelector('.profile__username');
-const authorAbout = document.querySelector('.profile__about');
-const nameInput = document.querySelector('.popup__author-name');
-const aboutInput = document.querySelector('.popup__author-about');
+const userName = document.querySelector('.profile__username');
+const userDescription = document.querySelector('.profile__description');
+const inputFieldName = document.querySelector('.popup__input-field_type_name');
+const inputFieldDescription = document.querySelector('.popup__input-field_type_description');
 
 function togglePopupWindow(popup) {
   popup.classList.toggle('popup_opened');
@@ -20,12 +20,12 @@ closePopupButton.addEventListener('click', function () {
   togglePopupWindow(popupWindow);
 });
 
-nameInput.value = authorName.textContent;
-aboutInput.value = authorAbout.textContent;
+inputFieldName.value = userName.textContent;
+inputFieldDescription.value = userDescription.textContent;
 
 popupForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  authorName.textContent = nameInput.value;
-  authorAbout.textContent = aboutInput.value;
+  userName.textContent = inputFieldName.value;
+  userDescription.textContent = inputFieldDescription.value;
   togglePopupWindow(popupWindow);
 });

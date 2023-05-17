@@ -1,5 +1,5 @@
 .popup__submit-button {
-  margin-top: 48px;
+  margin-top: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,7 +10,6 @@
   height: 50px;
   font-size: 18px;
   line-height: 22px;
-  cursor: pointer;
 }
 
 .popup__submit-button:hover {
