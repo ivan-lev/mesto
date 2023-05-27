@@ -56,7 +56,8 @@ function createCard(card) {
 
   const deleteButton = newCard.querySelector('.elements__del-button');
   deleteButton.addEventListener('click', function () {
-    deleteButton.closest('.elements__card').remove();
+    cardsSection.removeChild(newCard);
+    //deleteButton.closest('.elements__card').remove(); - тоже рабочий метод
   });
 
   const likeButton = newCard.querySelector('.elements__like-button');
