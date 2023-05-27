@@ -5,3 +5,7 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.button:hover {
+  opacity: 0.6;
+}

@@ -9,10 +9,6 @@
   flex-shrink: 0;
 }
 
-.profile__add-button:hover {
-  opacity: 0.6;
-}
-
 @media screen and (max-width: 767px) {
   .profile__add-button {
     margin: 32px 0 0;
