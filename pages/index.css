@@ -33,6 +33,7 @@
 @import url('../blocks/elements/__description/elements__description.css');
 @import url('../blocks/elements/__photo-name/elements__photo-name.css');
 @import url('../blocks/elements/__like-button/elements__like-button.css');
+@import url('../blocks/elements/__trash-button/elements__trash-button.css');
 
 /* ======= POPUP STYLES ======= */
 

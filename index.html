@@ -23,7 +23,7 @@
       </section>
 
       <section class="elements">
-        <div class="elements__card">
+        <!-- <div class="elements__card">
           <img
             src="./images/photo-dvuglavaya-sopka.jpg"
             alt="Фото Двуглавой сопки"
@@ -33,6 +33,7 @@
             <h2 class="elements__photo-name">Двуглавая сопка</h2>
             <button type="button" class="button elements__like-button"></button>
           </div>
+          <button type="button" class="button elements__trash-button"></button>
         </div>
 
         <div class="elements__card">
@@ -89,7 +90,7 @@
             <h2 class="elements__photo-name">Вид с метеостанции</h2>
             <button type="button" class="button elements__like-button"></button>
           </div>
-        </div>
+        </div> -->
       </section>
 
       <div class="popup">
@@ -115,13 +116,14 @@
 
     <footer class="footer"><p class="footer__info">&copy; 2020 Mesto Russia</p></footer>
 
-    <template>
+    <template id="card-template">
       <div class="elements__card">
         <img src="" alt="" class="elements__photo" />
         <div class="elements__description">
           <h2 class="elements__photo-name"></h2>
           <button type="button" class="button elements__like-button"></button>
         </div>
+        <button type="button" class="button elements__trash-button"></button>
       </div>
     </template>
   </body>
