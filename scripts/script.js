@@ -37,24 +37,6 @@ popupForm.addEventListener('submit', function (event) {
   togglePopupWindow(popupWindow);
 });
 
-// =============== КОД ДЛЯ ВЗАИМОДЕЙСТВИЯ С ОКНОМ ДОБАВЛЕНИЯ ФОТОКАРТОЧКИ ===============
-
-const addPhotoButton = document.querySelector('#add-photo-button');
-const closePhotoButton = document.querySelector('#close-photo-add-button');
-
-const popupPhotoWindow = document.querySelector('#photo-popup-window');
-const popupPhotoForm = document.querySelector('.popup__photo-form');
-
-/* Открыть окно добавления фото */
-addPhotoButton.addEventListener('click', function () {
-  togglePopupWindow(popupPhotoWindow);
-});
-
-/* Закрыть окно добавления фото */
-closePhotoButton.addEventListener('click', function () {
-  togglePopupWindow(popupPhotoWindow);
-});
-
 // =============== КОД ДЛЯ ВЗАИМОДЕЙСТВИЯ С ФОТОКАРТОЧКАМИ ===============
 
 const initialCards = [
@@ -107,9 +89,7 @@ function createCard(card) {
 
   const likeButton = newCard.querySelector('.elements__like-button');
   likeButton.addEventListener('click', function () {
-    // event.target.classlist.toggle('.elements__like-button:active');
     likeButton.classList.toggle('elements__like-button_active');
-    // likeButton.classList.add('.elements__like-button:active');
   });
 
   return newCard;
@@ -120,3 +100,36 @@ initialCards.forEach(function (item) {
   const newItem = createCard(item);
   cardsSection.prepend(newItem);
 });
+
+// =============== КОД ДЛЯ ВЗАИМОДЕЙСТВИЯ С ОКНОМ ДОБАВЛЕНИЯ ФОТОКАРТОЧКИ ===============
+
+const addPhotoButton = document.querySelector('#add-photo-button');
+const closePhotoButton = document.querySelector('#close-photo-add-button');
+
+const popupPhotoWindow = document.querySelector('#photo-popup-window');
+const popupPhotoForm = document.querySelector('#popup__photo-form');
+
+/* Открыть окно добавления фото */
+addPhotoButton.addEventListener('click', function () {
+  togglePopupWindow(popupPhotoWindow);
+});
+
+/* Закрыть окно добавления фото */
+closePhotoButton.addEventListener('click', function () {
+  togglePopupWindow(popupPhotoWindow);
+});
+
+/* Сохранить на странице новые данные юзера */
+const inputPhotoName = document.querySelector('.popup__input-field_type_name');
+const inputPhotoUrl = document.querySelector('.popup__input-field_type_photo-url');
+popupPhotoForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const newCardData = { name: '', link: '' };
+  newCardData.name = document.querySelector('.popup__input-field_type_photo-name').value;
+  newCardData.link = document.querySelector('.popup__input-field_type_photo-url').value;
+  const newItem = createCard(newCardData);
+  cardsSection.prepend(newItem);
+  togglePopupWindow(popupPhotoWindow);
+});
+
+/* Добавить новую фотокарточку */

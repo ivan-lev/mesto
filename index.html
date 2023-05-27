@@ -124,18 +124,18 @@
       <div id="photo-popup-window" class="popup">
         <div class="popup__container">
           <p class="popup__heading">Новое место</p>
-          <form name="popup__photo-form" class="popup__form">
+          <form id="popup__photo-form" name="popup__photo-form" class="popup__form">
             <input
               type="text"
               placeholder="Название"
               name="photo-name"
-              class="popup__input-field popup__input-field_type_name"
+              class="popup__input-field popup__input-field_type_photo-name"
             />
             <input
-              type="url"
+              type="text"
               placeholder="Ссылка на картинку"
               name="photo-link"
-              class="popup__input-field popup__input-field_type_description"
+              class="popup__input-field popup__input-field_type_photo-url"
             />
             <button type="submit" class="button popup__submit-button">Создать</button>
           </form>
