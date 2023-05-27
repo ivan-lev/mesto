@@ -19,7 +19,11 @@
           <button type="button" class="button profile__edit-button"></button>
           <p class="profile__description">Фотографировал Таганай</p>
         </div>
-        <button type="button" class="button profile__add-button"></button>
+        <button
+          id="add-photo-button"
+          type="button"
+          class="button profile__add-photo-button"
+        ></button>
       </section>
 
       <section class="elements">
@@ -93,7 +97,7 @@
         </div> -->
       </section>
 
-      <div class="popup">
+      <div id="user-popup-window" class="popup">
         <div class="popup__container">
           <p class="popup__heading">Редактировать профиль</p>
           <form name="popup__form" class="popup__form">
@@ -109,29 +113,37 @@
             />
             <button type="submit" class="button popup__submit-button">Сохранить</button>
           </form>
-          <button type="button" class="button popup__close-button"></button>
+          <button
+            id="close-edit-user-button "
+            type="button"
+            class="button popup__close-button"
+          ></button>
         </div>
       </div>
 
-      <div class="popup">
+      <div id="photo-popup-window" class="popup">
         <div class="popup__container">
           <p class="popup__heading">Новое место</p>
-          <form name="popup__image-form" class="popup__form">
+          <form name="popup__photo-form" class="popup__form">
             <input
               type="text"
               placeholder="Название"
-              name="image-name"
+              name="photo-name"
               class="popup__input-field popup__input-field_type_name"
             />
             <input
               type="url"
               placeholder="Ссылка на картинку"
-              name="image-link"
+              name="photo-link"
               class="popup__input-field popup__input-field_type_description"
             />
             <button type="submit" class="button popup__submit-button">Создать</button>
           </form>
-          <button type="button" class="button popup__close-button"></button>
+          <button
+            id="close-photo-add-button"
+            type="button"
+            class="button popup__close-button"
+          ></button>
         </div>
       </div>
     </main>
@@ -145,7 +157,7 @@
           <h2 class="elements__photo-name"></h2>
           <button type="button" class="button elements__like-button"></button>
         </div>
-        <button type="button" class="button elements__trash-button"></button>
+        <button type="button" class="button elements__del-button"></button>
       </div>
     </template>
   </body>

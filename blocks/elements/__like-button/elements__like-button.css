@@ -10,8 +10,3 @@
 .elements__like-button:hover {
   opacity: 0.5;
 }
-
-.elements__like-button:active {
-  opacity: 1;
-  background: url('../../../images/button-heart_active.svg');
-}

@@ -23,7 +23,7 @@
 @import url('../blocks/profile/__username/profile__username.css');
 @import url('../blocks/profile/__edit-button/profile__edit-button.css');
 @import url('../blocks/profile/__description/profile__description.css');
-@import url('../blocks/profile/__add-button/profile__add-button.css');
+@import url('../blocks/profile/__add-photo-button/profile__add-photo-button.css');
 
 /* ======= ELEMENTS STYLES ======= */
 
@@ -33,7 +33,8 @@
 @import url('../blocks/elements/__description/elements__description.css');
 @import url('../blocks/elements/__photo-name/elements__photo-name.css');
 @import url('../blocks/elements/__like-button/elements__like-button.css');
-@import url('../blocks/elements/__trash-button/elements__trash-button.css');
+@import url('../blocks/elements/__like-button/_active/elements__like-button_active.css');
+@import url('../blocks/elements/__del-button/elements__del-button.css');
 
 /* ======= POPUP STYLES ======= */
 

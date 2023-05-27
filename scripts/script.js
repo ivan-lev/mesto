@@ -1,6 +1,8 @@
+// =============== КОД ДЛЯ ИЗМЕНЕНИЯ ИНФОРМАЦИИ ЮЗЕРА ===============
+
 const openPopupButton = document.querySelector('.profile__edit-button');
 const closePopupButton = document.querySelector('.popup__close-button');
-const popupWindow = document.querySelector('.popup');
+const popupWindow = document.querySelector('#user-popup-window');
 const popupForm = document.querySelector('.popup__form');
 
 const userName = document.querySelector('.profile__username');
@@ -8,7 +10,7 @@ const userDescription = document.querySelector('.profile__description');
 const inputFieldName = document.querySelector('.popup__input-field_type_name');
 const inputFieldDescription = document.querySelector('.popup__input-field_type_description');
 
-/* Открыть или скрыть всплывающее окно */
+/* Открыть или скрыть всплывающее окно - общая функция */
 function togglePopupWindow(popup) {
   popup.classList.toggle('popup_opened');
 }
@@ -34,6 +36,26 @@ popupForm.addEventListener('submit', function (event) {
   userDescription.textContent = inputFieldDescription.value;
   togglePopupWindow(popupWindow);
 });
+
+// =============== КОД ДЛЯ ВЗАИМОДЕЙСТВИЯ С ОКНОМ ДОБАВЛЕНИЯ ФОТОКАРТОЧКИ ===============
+
+const addPhotoButton = document.querySelector('#add-photo-button');
+const closePhotoButton = document.querySelector('#close-photo-add-button');
+
+const popupPhotoWindow = document.querySelector('#photo-popup-window');
+const popupPhotoForm = document.querySelector('.popup__photo-form');
+
+/* Открыть окно добавления фото */
+addPhotoButton.addEventListener('click', function () {
+  togglePopupWindow(popupPhotoWindow);
+});
+
+/* Закрыть окно добавления фото */
+closePhotoButton.addEventListener('click', function () {
+  togglePopupWindow(popupPhotoWindow);
+});
+
+// =============== КОД ДЛЯ ВЗАИМОДЕЙСТВИЯ С ФОТОКАРТОЧКАМИ ===============
 
 const initialCards = [
   {
@@ -66,8 +88,9 @@ const cardTemplate = document.querySelector('#card-template');
 const cardTemplateContent = cardTemplate.content;
 const cardTemplateElement = cardTemplateContent.querySelector('.elements__card');
 const cardsSection = document.querySelector('.elements');
+//
 
-/* Создать фотокарточку из картинки и текста */
+/* Создать фотокарточку, удалить, поставить лайк */
 function createCard(card) {
   const newCard = cardTemplateElement.cloneNode(true);
   /** @type {HTMLImageElement} */
@@ -76,6 +99,19 @@ function createCard(card) {
   newCardImage.alt = card.name;
   const newCardName = newCard.querySelector('.elements__photo-name');
   newCardName.textContent = card.name;
+
+  const deleteButton = newCard.querySelector('.elements__del-button');
+  deleteButton.addEventListener('click', function () {
+    deleteButton.closest('.elements__card').remove();
+  });
+
+  const likeButton = newCard.querySelector('.elements__like-button');
+  likeButton.addEventListener('click', function () {
+    // event.target.classlist.toggle('.elements__like-button:active');
+    likeButton.classList.toggle('elements__like-button_active');
+    // likeButton.classList.add('.elements__like-button:active');
+  });
+
   return newCard;
 }
 
