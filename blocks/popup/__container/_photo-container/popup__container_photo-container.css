@@ -1,6 +1,6 @@
 .popup__container_photo-container {
   width: auto;
-  height: calc(100vh - 90px - 68px);
+  margin: 90px;
   padding: 0;
   background-color: transparent;
 }
