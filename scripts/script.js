@@ -72,7 +72,7 @@ function createCard(card) {
 
 const openPhotoAddButton = document.querySelector('#add-photo-button');
 const closePhotoAddButton = document.querySelector('#close-photo-add-button');
-const popupPhotoWindow = document.querySelector('#photo-popup-window');
+const popupPhotoWindow = document.querySelector('#photo-add-popup-window');
 const popupPhotoForm = document.querySelector('#popup__photo-form');
 
 /* Открыть окно добавления фото */

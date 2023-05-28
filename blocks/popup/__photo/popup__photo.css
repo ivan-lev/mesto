@@ -1,0 +1,3 @@
+.popup__photo {
+  height: calc(100vh - 180px);
+}

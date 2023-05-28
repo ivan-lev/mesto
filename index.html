@@ -52,7 +52,7 @@
         </div>
       </div>
 
-      <div id="photo-popup-window" class="popup">
+      <div id="photo-add-popup-window" class="popup">
         <div class="popup__container">
           <p class="popup__heading">Новое место</p>
           <form id="popup__photo-form" name="popup__photo-form" class="popup__form">
@@ -77,6 +77,25 @@
           ></button>
         </div>
       </div>
+
+      <!-- <div id="photo-show-popup-window" class="popup popup_photo-window popup_opened">
+        <div class="popup__container popup__container_photo-container">
+          <figure class="popup_figure">
+            <img
+              class="popup__photo"
+              src="./images/photo-dvuglavaya-sopka.jpg"
+              alt="Двуглавая Сопка"
+            />
+            <figcaption class="popup__figcaption">Двуглавая Сопка</figcaption>
+          </figure>
+
+          <button
+            id="close-photo-add-button"
+            type="button"
+            class="button popup__close-button"
+          ></button>
+        </div>
+      </div> -->
     </main>
 
     <footer class="footer"><p class="footer__info">&copy; 2020 Mesto Russia</p></footer>
@@ -91,5 +110,25 @@
         <button type="button" class="button elements__del-button"></button>
       </div>
     </template>
+
+    <template id="photo-show-template"
+      ><div id="photo-show-popup-window" class="popup popup_photo-window">
+        <div class="popup__container popup__container_photo-container">
+          <figure class="popup_figure">
+            <img
+              class="popup__photo"
+              src="./images/photo-dvuglavaya-sopka.jpg"
+              alt="Двуглавая Сопка"
+            />
+            <figcaption class="popup__figcaption">Двуглавая Сопка</figcaption>
+          </figure>
+
+          <button
+            id="close-photo-add-button"
+            type="button"
+            class="button popup__close-button"
+          ></button>
+        </div></div
+    ></template>
   </body>
 </html>
