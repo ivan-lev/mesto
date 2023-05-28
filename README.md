@@ -15,12 +15,10 @@
 ![Figma](https://i.postimg.cc/RFM4dcwP/figma.png) Файл свёрстан по макету Figma\
 ![HTML5](https://i.postimg.cc/xCtY4cR9/html.png) Семантическая вёрстка\
 ![CSS3](https://i.postimg.cc/CKCwbvnB/css.png) Адаптивная и отзывчивая вёрстка, с применением flex-box и grid\
-![Normalize](https://i.postimg.cc/vTTMFbqf/normalize.png) Хорошая совместимость благодаря использованию [normalize.css](https://github.com/necolas/normalize.css/)\
+![Normalize](https://i.postimg.cc/vTTMFbqf/normalize.png) Хорошая совместимость и кроссбраузерность благодаря использованию [normalize.css](https://github.com/necolas/normalize.css/)\
 ![JavaScript](https://i.postimg.cc/VL7gk175/js.png) Интерактивная часть выполнена средствами JavaScript\
 ![БЭМ](https://i.postimg.cc/jjYswV2Y/bem.png) Файловая структура Nested БЭМ\
 ![Desktop](https://i.postimg.cc/zfNymHnh/monitor.png) Подход вёрстки Desktop-first
-
-**Ссылки**
 
 **Ссылки**
 
