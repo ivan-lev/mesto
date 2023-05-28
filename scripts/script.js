@@ -69,7 +69,7 @@ function createCard(card) {
 
   // Код, открывающий поп-ап картинки
   newCardImage.addEventListener('click', function () {
-    createPhotoWindow(card.link, card.name);
+    createPhotoWindow(card);
   });
 
   return newCard;
@@ -78,7 +78,7 @@ function createCard(card) {
 // =============== Функция создания поп-ап окна фотокарточки ===============
 // Передаём функции параметры, она встраивает их в код шаблона
 
-function createPhotoWindow(link, name) {
+function createPhotoWindow(object) {
   const photoWindowTemplate = document.querySelector('#photo-window-template');
   const photoTemplateContent = photoWindowTemplate.content;
   const photoWindowElement = photoTemplateContent.querySelector('.popup_photo-window');
@@ -86,9 +86,9 @@ function createPhotoWindow(link, name) {
   const newPhotoWindow = photoWindowElement.cloneNode(true);
   const showedPhoto = newPhotoWindow.querySelector('.popup__photo');
   const showedCaption = newPhotoWindow.querySelector('.popup__figcaption');
-  showedPhoto.src = link;
-  showedPhoto.alt = name;
-  showedCaption.textContent = name;
+  showedPhoto.src = object.link;
+  showedPhoto.alt = object.name;
+  showedCaption.textContent = object.name;
   togglePopupWindow(newPhotoWindow);
 
   // Встроим код окна фотографии в станицу и отобразим его
