@@ -37,14 +37,14 @@ popupForm.addEventListener('submit', function (event) {
   togglePopupWindow(popupWindow);
 });
 
-// =============== Код для взаимодействия с фотокарточками ===============
+// =============== Код для создания и взаимодействия с фотокарточками ===============
 
 const cardTemplate = document.querySelector('#card-template');
 const cardTemplateContent = cardTemplate.content;
 const cardTemplateElement = cardTemplateContent.querySelector('.elements__card');
 const cardsSection = document.querySelector('.elements');
 
-// Создать фотокарточку, удалить, поставить лайк
+// Создать фотокарточку
 function createCard(card) {
   const newCard = cardTemplateElement.cloneNode(true);
   /** @type {HTMLImageElement} */
@@ -54,18 +54,53 @@ function createCard(card) {
   const newCardName = newCard.querySelector('.elements__photo-name');
   newCardName.textContent = card.name;
 
+  // Удалить фотокарточку
   const deleteButton = newCard.querySelector('.elements__del-button');
   deleteButton.addEventListener('click', function () {
     cardsSection.removeChild(newCard);
     //deleteButton.closest('.elements__card').remove(); - тоже рабочий метод
   });
 
+  // Поставить лайк фотокарточке
   const likeButton = newCard.querySelector('.elements__like-button');
   likeButton.addEventListener('click', function () {
     likeButton.classList.toggle('elements__like-button_active');
   });
 
+  // Код, открывающий поп-ап картинки
+  newCardImage.addEventListener('click', function () {
+    createPhotoWindow(card.link, card.name);
+  });
+
   return newCard;
+}
+
+// =============== Функция создания поп-ап окна фотокарточки ===============
+// Передаём функции параметры, она встраивает их в код шаблона
+
+function createPhotoWindow(link, name) {
+  const photoWindowTemplate = document.querySelector('#photo-window-template');
+  const photoTemplateContent = photoWindowTemplate.content;
+  const photoWindowElement = photoTemplateContent.querySelector('.popup_photo-window');
+
+  const newPhotoWindow = photoWindowElement.cloneNode(true);
+  const showedPhoto = newPhotoWindow.querySelector('.popup__photo');
+  const showedCaption = newPhotoWindow.querySelector('.popup__figcaption');
+  showedPhoto.src = link;
+  showedPhoto.alt = name;
+  showedCaption.textContent = name;
+  togglePopupWindow(newPhotoWindow);
+
+  // Встроим код окна фотографии в станицу и отобразим его
+  const parentEl = document.querySelector('.content');
+  parentEl.append(newPhotoWindow);
+
+  // Закрываем окно и удаляем его код из страницы
+  const closePhotoWindowButton = newPhotoWindow.querySelector('#close-photo-window-button');
+  closePhotoWindowButton.addEventListener('click', function () {
+    togglePopupWindow(newPhotoWindow);
+    parentEl.removeChild(newPhotoWindow);
+  });
 }
 
 // =============== Взаимодействие с окном добавления фотокарточки ===============
