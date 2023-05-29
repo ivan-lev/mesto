@@ -39,7 +39,7 @@
 /* ======= POPUP STYLES ======= */
 
 @import url('../blocks/popup/popup.css');
-@import url('../blocks/popup/_opened/popup_opened.css');
+
 @import url('../blocks/popup/__container/popup__container.css');
 @import url('../blocks/popup/__form/popup__form.css');
 @import url('../blocks/popup/__heading/popup__heading.css');
@@ -51,6 +51,7 @@
 @import url('../blocks/popup/__figure/popup__figure.css');
 @import url('../blocks/popup/__photo/popup__photo.css');
 @import url('../blocks/popup/__figcaption/popup__figcaption.css');
+@import url('../blocks/popup/_opened/popup_opened.css');
 
 /* ======= FOOTER STYLES ======= */
 
