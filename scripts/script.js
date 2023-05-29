@@ -78,28 +78,20 @@ function createCard(card) {
 // =============== Функция создания поп-ап окна фотокарточки ===============
 // Передаём функции параметры, она встраивает их в код шаблона
 
+const photoWindow = document.querySelector('.popup_photo-window');
+const displayedPhoto = document.querySelector('.popup__photo');
+const displayedCaption = document.querySelector('.popup__figcaption');
+
 function createPhotoWindow(object) {
-  const photoWindowTemplate = document.querySelector('#photo-window-template');
-  const photoTemplateContent = photoWindowTemplate.content;
-  const photoWindowElement = photoTemplateContent.querySelector('.popup_photo-window');
+  displayedPhoto.src = object.link;
+  displayedPhoto.alt = object.name;
+  displayedCaption.textContent = object.name;
+  togglePopupWindow(photoWindow);
 
-  const newPhotoWindow = photoWindowElement.cloneNode(true);
-  const showedPhoto = newPhotoWindow.querySelector('.popup__photo');
-  const showedCaption = newPhotoWindow.querySelector('.popup__figcaption');
-  showedPhoto.src = object.link;
-  showedPhoto.alt = object.name;
-  showedCaption.textContent = object.name;
-  togglePopupWindow(newPhotoWindow);
-
-  // Встроим код окна фотографии в станицу и отобразим его
-  const parentEl = document.querySelector('.content');
-  parentEl.append(newPhotoWindow);
-
-  // Закрываем окно и удаляем его код из страницы
-  const closePhotoWindowButton = newPhotoWindow.querySelector('#close-photo-window-button');
+  // Закрываем окно
+  const closePhotoWindowButton = document.querySelector('#close-photo-window-button');
   closePhotoWindowButton.addEventListener('click', function () {
-    togglePopupWindow(newPhotoWindow);
-    parentEl.removeChild(newPhotoWindow);
+    photoWindow.classList.remove('popup_opened');
   });
 }
 
