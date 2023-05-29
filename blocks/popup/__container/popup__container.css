@@ -14,14 +14,3 @@
     padding: 25px 22px;
   }
 }
-
-/* .popup__container {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 1s linear;
-}
-
-.popup:hover .popup__container {
-  visibility: visible;
-  opacity: 1;
-} */
