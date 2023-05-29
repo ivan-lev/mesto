@@ -4,4 +4,6 @@
   background: #fff;
   line-height: 0;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
