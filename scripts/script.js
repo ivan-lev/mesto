@@ -15,19 +15,17 @@ function togglePopupWindow(popup) {
   popup.classList.toggle('popup_opened');
 }
 
-// Открыть окно редактирования юзера
+// Открыть окно редактирования данных юзера и вывести уже вбитые данные
 openPopupButton.addEventListener('click', function () {
   togglePopupWindow(popupWindow);
+  inputFieldName.value = userName.textContent;
+  inputFieldDescription.value = userDescription.textContent;
 });
 
 // Закрыть окно редактирования юзера
 closePopupButton.addEventListener('click', function () {
   togglePopupWindow(popupWindow);
 });
-
-// Отобразить в попа-апе данные юзера
-inputFieldName.value = userName.textContent;
-inputFieldDescription.value = userDescription.textContent;
 
 // Сохранить на странице новые данные юзера
 popupForm.addEventListener('submit', function (event) {
@@ -69,31 +67,32 @@ function createCard(card) {
 
   // Код, открывающий поп-ап картинки
   newCardImage.addEventListener('click', function () {
-    createPhotoWindow(card);
+    showPhotoWindow(card);
   });
 
   return newCard;
 }
 
-// =============== Функция создания поп-ап окна фотокарточки ===============
+// =============== Код для взаимодействия с поп-апом изображения ===============
 // Передаём функции параметры, она встраивает их в код шаблона
 
 const photoWindow = document.querySelector('.popup_photo-window');
-const displayedPhoto = document.querySelector('.popup__photo');
-const displayedCaption = document.querySelector('.popup__figcaption');
+const displayedPhoto = photoWindow.querySelector('.popup__photo');
+const displayedCaption = photoWindow.querySelector('.popup__figcaption');
+const closePhotoWindowButton = document.querySelector('#close-photo-window-button');
 
-function createPhotoWindow(object) {
+// Отобразить поп-ап с изображением
+function showPhotoWindow(object) {
   displayedPhoto.src = object.link;
   displayedPhoto.alt = object.name;
   displayedCaption.textContent = object.name;
   togglePopupWindow(photoWindow);
-
-  // Закрываем окно
-  const closePhotoWindowButton = document.querySelector('#close-photo-window-button');
-  closePhotoWindowButton.addEventListener('click', function () {
-    photoWindow.classList.remove('popup_opened');
-  });
 }
+
+// Слушатель, закрывающий поп-ап с изображением
+closePhotoWindowButton.addEventListener('click', function () {
+  togglePopupWindow(photoWindow);
+});
 
 // =============== Взаимодействие с окном добавления фотокарточки ===============
 
@@ -112,49 +111,25 @@ closePhotoAddButton.addEventListener('click', function () {
   togglePopupWindow(popupPhotoWindow);
 });
 
+const inputFieldPhotoName = document.querySelector('.popup__input-field_type_photo-name');
+const inputFieldPhotoLink = document.querySelector('.popup__input-field_type_photo-url');
+
 /* Сохранить на странице новую карточку */
 popupPhotoForm.addEventListener('submit', function (event) {
   event.preventDefault();
   const newCardData = { name: '', link: '' };
-  newCardData.name = document.querySelector('.popup__input-field_type_photo-name').value;
-  newCardData.link = document.querySelector('.popup__input-field_type_photo-url').value;
+  newCardData.name = inputFieldPhotoName.value;
+  newCardData.link = inputFieldPhotoLink.value;
   const newItem = createCard(newCardData);
   cardsSection.prepend(newItem);
   togglePopupWindow(popupPhotoWindow);
-  document.querySelector('.popup__input-field_type_photo-name').value = '';
-  document.querySelector('.popup__input-field_type_photo-url').value = '';
+  inputFieldPhotoName.value = '';
+  inputFieldPhotoLink.value = '';
 });
 
 // =============== Заполнить страницу дефолтными ккарточками ===============
 
-const initialCards = [
-  {
-    name: 'Двуглавая сопка',
-    link: './images/photo-dvuglavaya-sopka.jpg'
-  },
-  {
-    name: 'Каменная река',
-    link: './images/photo-kamennaya-reka.jpg'
-  },
-  {
-    name: 'Круглица',
-    link: './images/photo-kruglitsa.jpg'
-  },
-  {
-    name: 'Откликной гребень',
-    link: './images/photo-otkliknoy-greben.jpg'
-  },
-  {
-    name: 'Вид с Круглицы',
-    link: './images/photo-vid-s-kruglitsi.jpg'
-  },
-  {
-    name: 'Вид с метеостанции',
-    link: './images/photo-vid-s-meteostansii.jpg'
-  }
-];
-
-/* Создать первые 6 фотокарточек */
+/* Создать фотокарточки из файла */
 initialCards.forEach(function (item) {
   const newItem = createCard(item);
   cardsSection.prepend(newItem);
