@@ -1,71 +1,92 @@
-// =============== Изменение информации юзера ===============
+//
+// ======= Переменные, относящиеся к поп-апу редактирования данных юзера ======= //
+const popupEditProfile = document.querySelector('#popup-edit-profile');
+const editProfileForm = popupEditProfile.querySelector('.popup__form');
+const buttonOpenEditProfile = document.querySelector('.profile__edit-button');
+const buttonCloseEditProfile = document.querySelector('.popup__close-button');
 
-const openPopupButton = document.querySelector('.profile__edit-button');
-const closePopupButton = document.querySelector('.popup__close-button');
-const popupWindow = document.querySelector('#user-popup-window');
-const popupForm = document.querySelector('.popup__form');
+// ======= Переменные, относящиеся к данным юзера ======= //
+const currentUserName = document.querySelector('.profile__username');
+const currentUserDescription = document.querySelector('.profile__description');
+const newUserName = document.querySelector('.popup__input-field_type_name');
+const newUserDescription = document.querySelector('.popup__input-field_type_description');
 
-const userName = document.querySelector('.profile__username');
-const userDescription = document.querySelector('.profile__description');
-const inputFieldName = document.querySelector('.popup__input-field_type_name');
-const inputFieldDescription = document.querySelector('.popup__input-field_type_description');
-
-// Открыть или скрыть всплывающее окно - общая функция
-function togglePopupWindow(popup) {
-  popup.classList.toggle('popup_opened');
-}
-
-// Открыть окно редактирования данных юзера и вывести уже вбитые данные
-openPopupButton.addEventListener('click', function () {
-  togglePopupWindow(popupWindow);
-  inputFieldName.value = userName.textContent;
-  inputFieldDescription.value = userDescription.textContent;
-});
-
-// Закрыть окно редактирования юзера
-closePopupButton.addEventListener('click', function () {
-  togglePopupWindow(popupWindow);
-});
-
-// Сохранить на странице новые данные юзера
-popupForm.addEventListener('submit', function (event) {
-  event.preventDefault();
-  userName.textContent = inputFieldName.value;
-  userDescription.textContent = inputFieldDescription.value;
-  togglePopupWindow(popupWindow);
-});
-
-// =============== Код для создания и взаимодействия с фотокарточками ===============
-
+// ======= Переменные, относящиеся к созданию фотокарточки на странице ======= //
 const cardTemplate = document.querySelector('#card-template');
 const cardTemplateContent = cardTemplate.content;
 const cardTemplateElement = cardTemplateContent.querySelector('.elements__card');
 const cardsSection = document.querySelector('.elements');
 
-// Создать фотокарточку
+// ======= Переменные, относящиеся к поп-апу просмотра фотографии ======= //
+const popupPhotoWindow = document.querySelector('.popup_photo-window');
+const photoToDisplay = popupPhotoWindow.querySelector('.popup__photo');
+const captionToDisplay = popupPhotoWindow.querySelector('.popup__figcaption');
+const closePhotoWindowButton = document.querySelector('#close-photo-window-button');
+
+// ======= Переменные, относящиеся к поп-апу добавления фотографии ======= //
+const popupAddPhoto = document.querySelector('#photo-add-popup-window');
+const formAddPhoto = document.querySelector('#popup__photo-form');
+const buttonAddPhoto = document.querySelector('#add-photo-button');
+const buttonAddPhotoClose = document.querySelector('#close-photo-add-button');
+const newPhotoName = document.querySelector('.popup__input-field_type_photo-name');
+const newPhotoLink = document.querySelector('.popup__input-field_type_photo-url');
+
+// ..................... ФУНКЦИИ ..................... //
+
+// Открыть попап
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
+
+// Закрыть попап
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
+// Открыть окно редактирования данных юзера и отобразить актуальные данные
+buttonOpenEditProfile.addEventListener('click', function () {
+  openPopup(popupEditProfile);
+  newUserName.value = currentUserName.textContent;
+  newUserDescription.value = currentUserDescription.textContent;
+});
+
+// Закрыть окно редактирования юзера
+buttonCloseEditProfile.addEventListener('click', function () {
+  closePopup(popupEditProfile);
+});
+
+// Сохранить на странице новые данные юзера
+editProfileForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  currentUserName.textContent = newUserName.value;
+  currentUserDescription.textContent = newUserDescription.value;
+  closePopup(popupEditProfile);
+});
+
+// Создать элемент фотокарточки
 function createCard(card) {
   const newCard = cardTemplateElement.cloneNode(true);
   /** @type {HTMLImageElement} */
   const newCardImage = newCard.querySelector('.elements__photo');
+  const newCardName = newCard.querySelector('.elements__photo-name');
+  const deleteCardButton = newCard.querySelector('.elements__del-button');
+  const likeButton = newCard.querySelector('.elements__like-button');
   newCardImage.src = card.link;
   newCardImage.alt = card.name;
-  const newCardName = newCard.querySelector('.elements__photo-name');
   newCardName.textContent = card.name;
 
   // Удалить фотокарточку
-  const deleteButton = newCard.querySelector('.elements__del-button');
-  deleteButton.addEventListener('click', function () {
+  deleteCardButton.addEventListener('click', function () {
     cardsSection.removeChild(newCard);
-    //deleteButton.closest('.elements__card').remove(); - тоже рабочий метод
+    //deleteCardButton.closest('.elements__card').remove(); - тоже рабочий метод
   });
 
-  // Поставить лайк фотокарточке
-  const likeButton = newCard.querySelector('.elements__like-button');
+  // Слушатель лайка фотокарточки
   likeButton.addEventListener('click', function () {
     likeButton.classList.toggle('elements__like-button_active');
   });
 
-  // Код, открывающий поп-ап картинки
+  // Слушатель открытия поп-апа картинки
   newCardImage.addEventListener('click', function () {
     showPhotoWindow(card);
   });
@@ -73,63 +94,45 @@ function createCard(card) {
   return newCard;
 }
 
-// =============== Код для взаимодействия с поп-апом изображения ===============
-// Передаём функции параметры, она встраивает их в код шаблона
-
-const photoWindow = document.querySelector('.popup_photo-window');
-const displayedPhoto = photoWindow.querySelector('.popup__photo');
-const displayedCaption = photoWindow.querySelector('.popup__figcaption');
-const closePhotoWindowButton = document.querySelector('#close-photo-window-button');
-
-// Отобразить поп-ап с изображением
+// Открыть поп-ап с изображением
 function showPhotoWindow(object) {
-  displayedPhoto.src = object.link;
-  displayedPhoto.alt = object.name;
-  displayedCaption.textContent = object.name;
-  togglePopupWindow(photoWindow);
+  photoToDisplay.src = object.link;
+  photoToDisplay.alt = object.name;
+  captionToDisplay.textContent = object.name;
+  openPopup(popupPhotoWindow);
 }
 
-// Слушатель, закрывающий поп-ап с изображением
-closePhotoWindowButton.addEventListener('click', function () {
-  togglePopupWindow(photoWindow);
-});
+// ..................... СЛУШАТЕЛИ ..................... //
 
-// =============== Взаимодействие с окном добавления фотокарточки ===============
-
-const openPhotoAddButton = document.querySelector('#add-photo-button');
-const closePhotoAddButton = document.querySelector('#close-photo-add-button');
-const popupPhotoWindow = document.querySelector('#photo-add-popup-window');
-const popupPhotoForm = document.querySelector('#popup__photo-form');
-
-/* Открыть окно добавления фото */
-openPhotoAddButton.addEventListener('click', function () {
-  togglePopupWindow(popupPhotoWindow);
-});
-
-/* Закрыть окно добавления фото */
-closePhotoAddButton.addEventListener('click', function () {
-  togglePopupWindow(popupPhotoWindow);
-});
-
-const inputFieldPhotoName = document.querySelector('.popup__input-field_type_photo-name');
-const inputFieldPhotoLink = document.querySelector('.popup__input-field_type_photo-url');
-
-/* Сохранить на странице новую карточку */
-popupPhotoForm.addEventListener('submit', function (event) {
+// Слушатель сохранения новой карточки с фото
+formAddPhoto.addEventListener('submit', function (event) {
   event.preventDefault();
   const newCardData = { name: '', link: '' };
-  newCardData.name = inputFieldPhotoName.value;
-  newCardData.link = inputFieldPhotoLink.value;
+  newCardData.name = newPhotoName.value;
+  newCardData.link = newPhotoLink.value;
   const newItem = createCard(newCardData);
   cardsSection.prepend(newItem);
-  togglePopupWindow(popupPhotoWindow);
-  inputFieldPhotoName.value = '';
-  inputFieldPhotoLink.value = '';
+  togglePopupWindow(popupAddPhoto);
+  newPhotoName.value = '';
+  newPhotoLink.value = '';
 });
 
-// =============== Заполнить страницу дефолтными ккарточками ===============
+// Слушатель закрытия поп-ап с изображением
+closePhotoWindowButton.addEventListener('click', function () {
+  closePopup(popupPhotoWindow);
+});
 
-/* Создать фотокарточки из файла */
+// Слушатель открытия поп-апа добавления нового фото
+buttonAddPhoto.addEventListener('click', function () {
+  openPopup(popupAddPhoto);
+});
+
+// Слушатель закрытия поп-апа добавления фото
+buttonAddPhotoClose.addEventListener('click', function () {
+  closePopup(popupAddPhoto);
+});
+
+// ......... Заполнить страницу дефолтными ккарточками ......... //
 initialCards.forEach(function (item) {
   const newItem = createCard(item);
   cardsSection.prepend(newItem);
