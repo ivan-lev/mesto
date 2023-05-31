@@ -112,7 +112,7 @@ formAddPhoto.addEventListener('submit', function (event) {
   newCardData.link = newPhotoLink.value;
   const newItem = createCard(newCardData);
   cardsSection.prepend(newItem);
-  togglePopupWindow(popupAddPhoto);
+  closePopup(popupAddPhoto);
   newPhotoName.value = '';
   newPhotoLink.value = '';
 });
