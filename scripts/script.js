@@ -113,8 +113,7 @@ formAddPhoto.addEventListener('submit', function (event) {
   const newItem = createCard(newCardData);
   cardsSection.prepend(newItem);
   closePopup(popupAddPhoto);
-  newPhotoName.value = '';
-  newPhotoLink.value = '';
+  formAddPhoto.reset();
 });
 
 // Слушатель закрытия поп-ап с изображением
