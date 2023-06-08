@@ -131,6 +131,15 @@ buttonAddPhotoClose.addEventListener('click', function () {
   closePopup(popupAddPhoto);
 });
 
+// Слушатель закрытия поп-апа по Esc
+// дописал сам после сдачи 5-й практической работы
+document.addEventListener('keydown', function (event) {
+  const windowToClose = document.querySelector('.popup_opened');
+  if (event.code == 'Escape') {
+    closePopup(windowToClose);
+  }
+});
+
 // ......... Заполнить страницу дефолтными ккарточками ......... //
 initialCards.forEach(function (item) {
   const newItem = createCard(item);
