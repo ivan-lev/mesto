@@ -1,9 +1,6 @@
 //
-// ======= Переменные, относящиеся к поп-апу редактирования данных юзера ======= //
-const popupEditProfile = document.querySelector('#popup-edit-profile');
-const editProfileForm = popupEditProfile.querySelector('.popup__form');
-const buttonOpenEditProfile = document.querySelector('.profile__edit-button');
-const buttonCloseEditProfile = document.querySelector('.popup__close-button');
+// Общие переменные
+const page = document.querySelector('.page');
 
 // ======= Переменные, относящиеся к данным юзера ======= //
 const currentUserName = document.querySelector('.profile__username');
@@ -17,51 +14,57 @@ const cardTemplateContent = cardTemplate.content;
 const cardTemplateElement = cardTemplateContent.querySelector('.elements__card');
 const cardsSection = document.querySelector('.elements');
 
+// ======= Переменные, относящиеся к поп-апу редактирования данных юзера ======= //
+const popupEditProfile = document.querySelector('#popup-edit-profile');
+const editProfileForm = popupEditProfile.querySelector('.popup__form');
+const buttonOpenEditProfile = document.querySelector('.profile__edit-button');
+const buttonCloseEditProfile = document.querySelector('.popup__close-button');
+
 // ======= Переменные, относящиеся к поп-апу просмотра фотографии ======= //
 const popupPhotoWindow = document.querySelector('.popup_photo-window');
 const photoToDisplay = popupPhotoWindow.querySelector('.popup__photo');
 const captionToDisplay = popupPhotoWindow.querySelector('.popup__figcaption');
-const closePhotoWindowButton = document.querySelector('#close-photo-window-button');
+const buttonClosePhotoWindow = document.querySelector('#close-photo-window-button');
 
 // ======= Переменные, относящиеся к поп-апу добавления фотографии ======= //
 const popupAddPhoto = document.querySelector('#photo-add-popup-window');
 const formAddPhoto = document.querySelector('#popup__photo-form');
 const buttonAddPhoto = document.querySelector('#add-photo-button');
-const buttonAddPhotoClose = document.querySelector('#close-photo-add-button');
+const buttonCloseAddPhoto = document.querySelector('#close-photo-add-button');
 const newPhotoName = document.querySelector('.popup__input-field_type_photo-name');
 const newPhotoLink = document.querySelector('.popup__input-field_type_photo-url');
 
 // ..................... ФУНКЦИИ ..................... //
 
-// Открыть попап
+// Открыть попап (и повесить функции закрытия окна по Esc и на оверлее)
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  closePopupByEsc(popup);
+  closePopupByOverlay(popup);
 }
 
 // Закрыть попап
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  //page.removeEventListener('keydown', closePopupByEsc);
 }
 
-// Открыть окно редактирования данных юзера и отобразить актуальные данные
-buttonOpenEditProfile.addEventListener('click', function () {
-  openPopup(popupEditProfile);
-  newUserName.value = currentUserName.textContent;
-  newUserDescription.value = currentUserDescription.textContent;
-});
+// Закрытия поп-апа, вызвав слушатель, который срабатывает по Esc
+function closePopupByEsc(popup) {
+  page.addEventListener('keydown', function (event) {
+    if (event.code == 'Escape') {
+      closePopup(popup);
+    }
+  });
+}
 
-// Закрыть окно редактирования юзера
-buttonCloseEditProfile.addEventListener('click', function () {
-  closePopup(popupEditProfile);
-});
-
-// Сохранить на странице новые данные юзера
-editProfileForm.addEventListener('submit', function (event) {
-  event.preventDefault();
-  currentUserName.textContent = newUserName.value;
-  currentUserDescription.textContent = newUserDescription.value;
-  closePopup(popupEditProfile);
-});
+function closePopupByOverlay(popup) {
+  popup.addEventListener('click', function (event) {
+    if (event.target == event.currentTarget) {
+      closePopup(popup);
+    }
+  });
+}
 
 // Создать элемент фотокарточки
 function createCard(card) {
@@ -104,43 +107,52 @@ function showPhotoWindow(object) {
 
 // ..................... СЛУШАТЕЛИ ..................... //
 
-// Слушатель сохранения новой карточки с фото
+// Открыть окно редактирования данных юзера и отобразить актуальные данные
+buttonOpenEditProfile.addEventListener('click', function () {
+  openPopup(popupEditProfile);
+  newUserName.value = currentUserName.textContent;
+  newUserDescription.value = currentUserDescription.textContent;
+});
+
+// Закрыть окно редактирования юзера
+buttonCloseEditProfile.addEventListener('click', function () {
+  closePopup(popupEditProfile);
+});
+
+// Сохранить на странице новые данные юзера
+editProfileForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  currentUserName.textContent = newUserName.value;
+  currentUserDescription.textContent = newUserDescription.value;
+  closePopup(popupEditProfile);
+});
+
+// Сохранить на странице новую карточку с фото
 formAddPhoto.addEventListener('submit', function (event) {
   event.preventDefault();
-  const newCardData = { name: '', link: '' };
-  newCardData.name = newPhotoName.value;
-  newCardData.link = newPhotoLink.value;
+  const newCardData = { name: newPhotoName.value, link: newPhotoLink.value };
   const newItem = createCard(newCardData);
   cardsSection.prepend(newItem);
   closePopup(popupAddPhoto);
   formAddPhoto.reset();
 });
 
-// Слушатель закрытия поп-ап с изображением
-closePhotoWindowButton.addEventListener('click', function () {
+// Закрыть поп-ап с изображением
+buttonClosePhotoWindow.addEventListener('click', function () {
   closePopup(popupPhotoWindow);
 });
 
-// Слушатель открытия поп-апа добавления нового фото
+// Открыть поп-ап добавления нового фото
 buttonAddPhoto.addEventListener('click', function () {
   openPopup(popupAddPhoto);
 });
 
-// Слушатель закрытия поп-апа добавления фото
-buttonAddPhotoClose.addEventListener('click', function () {
+// Закрыть поп-ап добавления фото
+buttonCloseAddPhoto.addEventListener('click', function () {
   closePopup(popupAddPhoto);
 });
 
-// Слушатель закрытия поп-апа по Esc
-// дописал сам после сдачи 5-й практической работы
-document.addEventListener('keydown', function (event) {
-  const windowToClose = document.querySelector('.popup_opened');
-  if (event.code == 'Escape') {
-    closePopup(windowToClose);
-  }
-});
-
-// ......... Заполнить страницу дефолтными ккарточками ......... //
+// ......... Заполнить страницу дефолтными карточками ......... //
 initialCards.forEach(function (item) {
   const newItem = createCard(item);
   cardsSection.prepend(newItem);
