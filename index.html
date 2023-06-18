@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css" />
-    <script src="./scripts/constants.js"></script>
+    <script src="./scripts/constants.js" defer></script>
     <script src="./scripts/script.js" defer></script>
+    <script src="./scripts/validate.js" defer></script>
   </head>
   <body class="page">
     <header class="header"><a href="#" class="header__logo"></a></header>
@@ -37,11 +38,17 @@
               type="text"
               name="author-name"
               class="popup__input-field popup__input-field_type_name"
+              required
+              minlength="2"
+              maxlength="40"
             />
             <input
               type="text"
               name="author-about"
               class="popup__input-field popup__input-field_type_description"
+              required
+              minlength="2"
+              maxlength="200"
             />
             <button type="submit" class="button popup__submit-button">Сохранить</button>
           </form>
@@ -62,12 +69,14 @@
               placeholder="Название"
               name="photo-name"
               class="popup__input-field popup__input-field_type_photo-name"
+              required
             />
             <input
-              type="text"
+              type="url"
               placeholder="Ссылка на картинку"
               name="photo-link"
               class="popup__input-field popup__input-field_type_photo-url"
+              required
             />
             <button type="submit" class="button popup__submit-button">Создать</button>
           </form>
