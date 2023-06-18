@@ -36,38 +36,36 @@ const newPhotoLink = document.querySelector('.popup__input-field_type_photo-url'
 
 // ..................... ФУНКЦИИ ..................... //
 
-// Открыть попап (и повесить функции закрытия окна по Esc и на оверлее)
-function openPopup(popup) {
+// Открыть попап и добавить слушатели закрытия окна по Esc и на оверлее)
+const openPopup = popup => {
   popup.classList.add('popup_opened');
-  closePopupByEsc(popup);
-  closePopupByOverlay(popup);
-}
+  document.addEventListener('keydown', closePopupByEsc);
+  document.addEventListener('click', closePopupByOverlay);
+};
 
-// Закрыть попап
-function closePopup(popup) {
+// Закрыть попап и снять слушатели
+const closePopup = popup => {
   popup.classList.remove('popup_opened');
-  //page.removeEventListener('keydown', closePopupByEsc);
-}
+  document.removeEventListener('keydown', closePopupByEsc);
+  document.removeEventListener('click', closePopupByOverlay);
+};
 
-// Закрытия поп-апа, вызвав слушатель, который срабатывает по Esc
-function closePopupByEsc(popup) {
-  page.addEventListener('keydown', function (event) {
-    if (event.code == 'Escape') {
-      closePopup(popup);
-    }
-  });
-}
+const closePopupByEsc = event => {
+  const openedPopup = document.querySelector('.popup_opened');
+  if (event.key === 'Escape') {
+    closePopup(openedPopup);
+  }
+};
 
-function closePopupByOverlay(popup) {
-  popup.addEventListener('click', function (event) {
-    if (event.target == event.currentTarget) {
-      closePopup(popup);
-    }
-  });
-}
+const closePopupByOverlay = event => {
+  const openedPopup = document.querySelector('.popup_opened');
+  if (event.target === openedPopup) {
+    closePopup(openedPopup);
+  }
+};
 
 // Создать элемент фотокарточки
-function createCard(card) {
+const createCard = card => {
   const newCard = cardTemplateElement.cloneNode(true);
   /** @type {HTMLImageElement} */
   const newCardImage = newCard.querySelector('.elements__photo');
@@ -95,15 +93,15 @@ function createCard(card) {
   });
 
   return newCard;
-}
+};
 
 // Открыть поп-ап с изображением
-function showPhotoWindow(object) {
+const showPhotoWindow = object => {
   photoToDisplay.src = object.link;
   photoToDisplay.alt = object.name;
   captionToDisplay.textContent = object.name;
   openPopup(popupPhotoWindow);
-}
+};
 
 // ..................... СЛУШАТЕЛИ ..................... //
 
