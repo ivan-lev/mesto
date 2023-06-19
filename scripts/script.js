@@ -1,12 +1,9 @@
 //
-// Общие переменные
-const page = document.querySelector('.page');
-
 // ======= Переменные, относящиеся к данным юзера ======= //
 const currentUserName = document.querySelector('.profile__username');
 const currentUserDescription = document.querySelector('.profile__description');
-const newUserName = document.querySelector('.popup__input-field_type_name');
-const newUserDescription = document.querySelector('.popup__input-field_type_description');
+const newUserName = document.querySelector('.popup__input_type_name');
+const newUserDescription = document.querySelector('.popup__input_type_description');
 
 // ======= Переменные, относящиеся к созданию фотокарточки на странице ======= //
 const cardTemplate = document.querySelector('#card-template');
@@ -31,25 +28,26 @@ const popupAddPhoto = document.querySelector('#photo-add-popup-window');
 const formAddPhoto = document.querySelector('#popup__photo-form');
 const buttonAddPhoto = document.querySelector('#add-photo-button');
 const buttonCloseAddPhoto = document.querySelector('#close-photo-add-button');
-const newPhotoName = document.querySelector('.popup__input-field_type_photo-name');
-const newPhotoLink = document.querySelector('.popup__input-field_type_photo-url');
+const newPhotoName = document.querySelector('.popup__input_type_photo-name');
+const newPhotoLink = document.querySelector('.popup__input_type_photo-url');
 
 // ..................... ФУНКЦИИ ..................... //
 
-// Открыть попап и добавить слушатели закрытия окна по Esc и на оверлее)
+// Открыть поп-ап и добавить слушатели его закрытия по Esc и на оверлее
 const openPopup = popup => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEsc);
   document.addEventListener('click', closePopupByOverlay);
 };
 
-// Закрыть попап и снять слушатели
+// Закрыть попап и снять слушатели его закрытия по Esc и на оверлее
 const closePopup = popup => {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupByEsc);
   document.removeEventListener('click', closePopupByOverlay);
 };
 
+// Фенкция закрытия окна по нажатию Esc
 const closePopupByEsc = event => {
   const openedPopup = document.querySelector('.popup_opened');
   if (event.key === 'Escape') {
@@ -57,6 +55,7 @@ const closePopupByEsc = event => {
   }
 };
 
+// Фенкция закрытия окна по клику на оверлее
 const closePopupByOverlay = event => {
   const openedPopup = document.querySelector('.popup_opened');
   if (event.target === openedPopup) {
@@ -67,7 +66,6 @@ const closePopupByOverlay = event => {
 // Создать элемент фотокарточки
 const createCard = card => {
   const newCard = cardTemplateElement.cloneNode(true);
-  /** @type {HTMLImageElement} */
   const newCardImage = newCard.querySelector('.elements__photo');
   const newCardName = newCard.querySelector('.elements__photo-name');
   const deleteCardButton = newCard.querySelector('.elements__del-button');

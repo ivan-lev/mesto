@@ -1,4 +1,4 @@
-.popup__input-field {
+.popup__input {
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-size: 14px;
@@ -8,12 +8,12 @@
   margin-top: 30px;
 }
 
-.popup__input-field:invalid {
+.popup__input:invalid {
   border-bottom: 1px solid rgb(255, 0, 0);
 }
 
 @media screen and (max-width: 767px) {
-  .popup__input-field {
+  .popup__input {
     padding-bottom: 8px;
   }
 }

@@ -7,8 +7,9 @@
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css" />
     <script src="./scripts/constants.js" defer></script>
-    <script src="./scripts/script.js" defer></script>
+    <!-- <script src="./scripts/script.js" defer></script> -->
     <script src="./scripts/validate.js" defer></script>
+    <script src="./scripts/script.js" defer></script>
   </head>
   <body class="page">
     <header class="header"><a href="#" class="header__logo"></a></header>
@@ -33,52 +34,61 @@
       <div id="popup-edit-profile" class="popup">
         <div class="popup__container">
           <p class="popup__heading">Редактировать профиль</p>
-          <form name="popup__form" class="popup__form">
+          <form name="popup__form" class="popup__form" novalidate>
             <input
               type="text"
+              id="author-name"
               name="author-name"
-              class="popup__input-field popup__input-field_type_name"
+              class="popup__input popup__input_type_name"
               required
               minlength="2"
               maxlength="40"
             />
+            <span class="popup__error author-name-error"></span>
             <input
               type="text"
+              id="author-about"
               name="author-about"
-              class="popup__input-field popup__input-field_type_description"
+              class="popup__input popup__input_type_description"
               required
               minlength="2"
               maxlength="200"
             />
+            <span class="popup__error author-about-error"></span>
             <button type="submit" class="button popup__submit-button">Сохранить</button>
+
+            <button
+              id="close-edit-user-button"
+              type="submit"
+              class="button popup__close-button"
+            ></button>
           </form>
-          <button
-            id="close-edit-user-button"
-            type="button"
-            class="button popup__close-button"
-          ></button>
         </div>
       </div>
 
       <div id="photo-add-popup-window" class="popup">
         <div class="popup__container">
           <p class="popup__heading">Новое место</p>
-          <form id="popup__photo-form" name="popup__photo-form" class="popup__form">
+          <form id="popup__photo-form" name="popup__photo-form" class="popup__form" novalidate>
             <input
               type="text"
               placeholder="Название"
+              id="photo-name"
               name="photo-name"
-              class="popup__input-field popup__input-field_type_photo-name"
+              class="popup__input popup__input_type_photo-name"
               required
             />
+            <span class="popup__error photo-name-error"></span>
             <input
               type="url"
               placeholder="Ссылка на картинку"
+              id="photo-link"
               name="photo-link"
-              class="popup__input-field popup__input-field_type_photo-url"
+              class="popup__input popup__input_type_photo-url"
               required
             />
-            <button type="submit" class="button popup__submit-button">Создать</button>
+            <span class="popup__error photo-link-error"></span>
+            <button type="submit" class="button popup__submit-button" disabled>Создать</button>
           </form>
           <button
             id="close-photo-add-button"
