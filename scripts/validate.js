@@ -36,9 +36,6 @@ const setEventListeners = formElement => {
   // Найти кнопку в форме
   const buttonElement = formElement.querySelector('.popup__submit-button');
 
-  // Вызовать toggleButtonState, чтобы провести проверку до начала ввода данных
-  toggleButtonState(inputList, buttonElement);
-
   // Обходит массив и каждому полю добавляет обработчик события input
   inputList.forEach(inputElement => {
     inputElement.addEventListener('input', () => {
