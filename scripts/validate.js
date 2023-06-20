@@ -37,7 +37,7 @@ const setEventListeners = formElement => {
   const buttonElement = formElement.querySelector('.popup__submit-button');
 
   // Вызовать toggleButtonState, чтобы провести проверку до начала ввода данных
-  //toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement);
 
   // Обходит массив и каждому полю добавляет обработчик события input
   inputList.forEach(inputElement => {
@@ -45,7 +45,7 @@ const setEventListeners = formElement => {
       // Внутри колбэка вызывает isValid, передав ей форму и проверяемый элемент
       isValid(formElement, inputElement);
 
-      // Вызовем toggleButtonState и передадим ей массив полей и кнопку
+      // Вызвать toggleButtonState и передать ей массив полей и кнопку
       toggleButtonState(inputList, buttonElement);
     });
   });

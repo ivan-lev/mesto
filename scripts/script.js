@@ -26,10 +26,11 @@ const buttonClosePhotoWindow = document.querySelector('#close-photo-window-butto
 // ======= Переменные, относящиеся к поп-апу добавления фотографии ======= //
 const popupAddPhoto = document.querySelector('#photo-add-popup-window');
 const formAddPhoto = document.querySelector('#popup__photo-form');
-const buttonAddPhoto = document.querySelector('#add-photo-button');
+const buttonAddPhoto = document.querySelector('#open-popup-add-photo-button');
 const buttonCloseAddPhoto = document.querySelector('#close-photo-add-button');
 const newPhotoName = document.querySelector('.popup__input_type_photo-name');
 const newPhotoLink = document.querySelector('.popup__input_type_photo-url');
+const openPopupAddPhotoButton = document.querySelector('.popup__add-photo-button');
 
 // ..................... ФУНКЦИИ ..................... //
 
@@ -37,14 +38,14 @@ const newPhotoLink = document.querySelector('.popup__input_type_photo-url');
 const openPopup = popup => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEsc);
-  document.addEventListener('click', closePopupByOverlay);
+  document.addEventListener('mouseup', closePopupByOverlay);
 };
 
 // Закрыть попап и снять слушатели его закрытия по Esc и на оверлее
 const closePopup = popup => {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupByEsc);
-  document.removeEventListener('click', closePopupByOverlay);
+  document.removeEventListener('mouseup', closePopupByOverlay);
 };
 
 // Фенкция закрытия окна по нажатию Esc
@@ -63,7 +64,8 @@ const closePopupByOverlay = event => {
   }
 };
 
-// Создать элемент фотокарточки
+// Создать элемент фотокарточки, сбросить поля ввода, сделать кнопку неактивной
+// создать слкшатели на удаление, лайк
 const createCard = card => {
   const newCard = cardTemplateElement.cloneNode(true);
   const newCardImage = newCard.querySelector('.elements__photo');
@@ -73,6 +75,8 @@ const createCard = card => {
   newCardImage.src = card.link;
   newCardImage.alt = card.name;
   newCardName.textContent = card.name;
+  openPopupAddPhotoButton.classList.add('popup__submit-button_disabled');
+  openPopupAddPhotoButton.setAttribute('disabled', 'true');
 
   // Удалить фотокарточку
   deleteCardButton.addEventListener('click', function () {

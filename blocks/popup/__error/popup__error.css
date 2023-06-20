@@ -4,4 +4,8 @@
   line-height: 15px;
   color: #ff0000;
   opacity: 0;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 0;
 }
