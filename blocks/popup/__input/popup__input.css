@@ -9,6 +9,10 @@
   width: 100%;
 }
 
+.popup__input:focus-visible {
+  outline: 0;
+}
+
 .popup__input:invalid {
   border-bottom: 1px solid rgb(255, 0, 0);
 }
