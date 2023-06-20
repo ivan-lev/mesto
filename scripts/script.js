@@ -23,14 +23,14 @@ const photoToDisplay = popupPhotoWindow.querySelector('.popup__photo');
 const captionToDisplay = popupPhotoWindow.querySelector('.popup__figcaption');
 const buttonClosePhotoWindow = document.querySelector('#close-photo-window-button');
 
-// ======= Переменные, относящиеся к поп-апу добавления фотографии ======= //
-const popupAddPhoto = document.querySelector('#photo-add-popup-window');
-const formAddPhoto = document.querySelector('#popup__photo-form');
-const buttonAddPhoto = document.querySelector('#open-popup-add-photo-button');
-const buttonCloseAddPhoto = document.querySelector('#close-photo-add-button');
-const newPhotoName = document.querySelector('.popup__input_type_photo-name');
-const newPhotoLink = document.querySelector('.popup__input_type_photo-url');
-const openPopupAddPhotoButton = document.querySelector('.popup__add-photo-button');
+// ======= Переменные, относящиеся к поп-апу добавления места ======= //
+const popupAddPlace = document.querySelector('#place-add-popup-window');
+const formAddPlace = document.querySelector('#popup__photo-form');
+const buttonAddPlace = document.querySelector('#open-popup-add-photo-button');
+const buttonCloseAddPlace = document.querySelector('#close-photo-add-button');
+const newPlaceName = document.querySelector('.popup__input_type_photo-name');
+const newPlaceLink = document.querySelector('.popup__input_type_photo-url');
+const openPopupAddPlaceButton = document.querySelector('.popup__add-photo-button');
 
 // ..................... ФУНКЦИИ ..................... //
 
@@ -75,8 +75,8 @@ const createCard = card => {
   newCardImage.src = card.link;
   newCardImage.alt = card.name;
   newCardName.textContent = card.name;
-  openPopupAddPhotoButton.classList.add('popup__submit-button_disabled');
-  openPopupAddPhotoButton.setAttribute('disabled', 'true');
+  openPopupAddPlaceButton.classList.add('popup__submit-button_disabled');
+  openPopupAddPlaceButton.setAttribute('disabled', 'true');
 
   // Удалить фотокарточку
   deleteCardButton.addEventListener('click', function () {
@@ -128,13 +128,13 @@ editProfileForm.addEventListener('submit', function (event) {
 });
 
 // Сохранить на странице новую карточку с фото
-formAddPhoto.addEventListener('submit', function (event) {
+formAddPlace.addEventListener('submit', function (event) {
   event.preventDefault();
-  const newCardData = { name: newPhotoName.value, link: newPhotoLink.value };
+  const newCardData = { name: newPlaceName.value, link: newPlaceLink.value };
   const newItem = createCard(newCardData);
   cardsSection.prepend(newItem);
-  closePopup(popupAddPhoto);
-  formAddPhoto.reset();
+  closePopup(popupAddPlace);
+  formAddPlace.reset();
 });
 
 // Закрыть поп-ап с изображением
@@ -143,13 +143,13 @@ buttonClosePhotoWindow.addEventListener('click', function () {
 });
 
 // Открыть поп-ап добавления нового фото
-buttonAddPhoto.addEventListener('click', function () {
-  openPopup(popupAddPhoto);
+buttonAddPlace.addEventListener('click', function () {
+  openPopup(popupAddPlace);
 });
 
 // Закрыть поп-ап добавления фото
-buttonCloseAddPhoto.addEventListener('click', function () {
-  closePopup(popupAddPhoto);
+buttonCloseAddPlace.addEventListener('click', function () {
+  closePopup(popupAddPlace);
 });
 
 // ......... Заполнить страницу дефолтными карточками ......... //
