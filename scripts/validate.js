@@ -1,20 +1,16 @@
-// const formElement = document.querySelector('.popup__form');
-// const formInput = formElement.querySelector('.popup__input');
-// const formError = formElement.querySelector(`.${formInput.id}-error`);
-
 // Функция, добавляющая класс с ошибкой и отображающяя сообщение об ошибке
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('form__input_type_error');
+  inputElement.classList.add(variables.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup__error_visible');
+  errorElement.classList.add(`${variables.errorClass}_visible`);
 };
 
 // Функция, удаляющая класс с ошибкой и скрывающая сообщение об ошибке
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('form__input_type_error');
-  errorElement.classList.remove('popup__error_visible');
+  inputElement.classList.remove(variables.inputErrorClass);
+  errorElement.classList.remove(`${variables.errorClass}_visible`);
   errorElement.textContent = '';
 };
 
@@ -32,9 +28,9 @@ const isValid = (formElement, inputElement) => {
 // Функция, вешающая слушатели на все поля формы
 const setEventListeners = formElement => {
   // Создаёт массив из всех полей внутри формы
-  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+  const inputList = Array.from(formElement.querySelectorAll(variables.inputSelector));
   // Найти кнопку в форме
-  const buttonElement = formElement.querySelector('.popup__submit-button');
+  const buttonElement = formElement.querySelector(variables.submitButtonSelector);
 
   // Обходит массив и каждому полю добавляет обработчик события input
   inputList.forEach(inputElement => {
@@ -49,9 +45,9 @@ const setEventListeners = formElement => {
 };
 
 // Функция, запускающая валидацию
-const enableValidation = () => {
+const enableValidation = ({}) => {
   // Создаёт массив из всех формы с классом .popup__form
-  const formList = Array.from(document.querySelectorAll('.popup__form'));
+  const formList = Array.from(document.querySelectorAll(variables.formSelector));
   // Для каждого элемента коллекции вызывает функцию setEventListeners,
   formList.forEach(formElement => {
     // и передаёт ей элемент формы
@@ -69,28 +65,26 @@ const hasInvalidInput = inputList => {
 };
 
 // Функция, принимающая массив полей ввода и элемент кнопки, состояние которой нужно менять
-
 const toggleButtonState = (inputList, buttonElement) => {
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
-    // сделай кнопку неактивной
-    buttonElement.classList.add('popup__submit-button_disabled');
+    // сделать кнопку неактивной
+    buttonElement.classList.add(variables.inactiveButtonClass);
     buttonElement.setAttribute('disabled', 'true');
   } else {
-    // иначе сделай кнопку активной
-    buttonElement.classList.remove('popup__submit-button_disabled');
+    // иначе сделать кнопку активной
+    buttonElement.classList.remove(variables.inactiveButtonClass);
     buttonElement.removeAttribute('disabled');
   }
 };
 
-// Вызовем функцию
-enableValidation();
+const variables = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error'
+};
 
-// enableValidation({
-//   formSelector: '.popup__form',
-//   inputSelector: '.popup__input',
-//   submitButtonSelector: '.popup__submit-button',
-//   inactiveButtonClass: 'popup__submit-button_disabled',
-//   inputErrorClass: 'popup__input_type_error',
-//   errorClass: 'popup__error_visible'
-// });
+enableValidation(variables);
