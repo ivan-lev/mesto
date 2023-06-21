@@ -140,10 +140,18 @@ buttonClosePhotoWindow.addEventListener('click', function () {
   closePopup(popupPhotoWindow);
 });
 
-// Открыть поп-ап добавления нового места
+// Слушатель открытия добавления нового места
+// Если поля формы невалидны, то деактивируем кнопку,
+// затем открываем поп-ап
 buttonOpenPopupAddPlace.addEventListener('click', function () {
-  popupAddPlaceButton.classList.add('popup__submit-button_disabled');
-  popupAddPlaceButton.setAttribute('disabled', 'true');
+  const inputList = Array.from(formAddPlace.querySelectorAll('.popup__input'));
+  const validityOfForm = inputList.every(function (input) {
+    return input.validity.valid;
+  });
+  if (!validityOfForm) {
+    popupAddPlaceButton.classList.add('popup__submit-button_disabled');
+    popupAddPlaceButton.setAttribute('disabled', 'true');
+  }
   openPopup(popupAddPlace);
 });
 
