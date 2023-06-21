@@ -26,11 +26,11 @@ const buttonClosePhotoWindow = document.querySelector('#close-photo-window-butto
 // ======= Переменные, относящиеся к поп-апу добавления места ======= //
 const popupAddPlace = document.querySelector('#place-add-popup-window');
 const formAddPlace = document.querySelector('#popup__photo-form');
-const buttonAddPlace = document.querySelector('#open-popup-add-photo-button');
+const buttonOpenPopupAddPlace = document.querySelector('#open-popup-add-photo-button');
 const buttonCloseAddPlace = document.querySelector('#close-photo-add-button');
 const newPlaceName = document.querySelector('.popup__input_type_photo-name');
 const newPlaceLink = document.querySelector('.popup__input_type_photo-url');
-const openPopupAddPlaceButton = document.querySelector('.popup__add-photo-button');
+const popupAddPlaceButton = document.querySelector('.popup__add-photo-button');
 
 // ..................... ФУНКЦИИ ..................... //
 
@@ -75,8 +75,6 @@ const createCard = card => {
   newCardImage.src = card.link;
   newCardImage.alt = card.name;
   newCardName.textContent = card.name;
-  openPopupAddPlaceButton.classList.add('popup__submit-button_disabled');
-  openPopupAddPlaceButton.setAttribute('disabled', 'true');
 
   // Удалить фотокарточку
   deleteCardButton.addEventListener('click', function () {
@@ -142,8 +140,10 @@ buttonClosePhotoWindow.addEventListener('click', function () {
   closePopup(popupPhotoWindow);
 });
 
-// Открыть поп-ап добавления нового фото
-buttonAddPlace.addEventListener('click', function () {
+// Открыть поп-ап добавления нового места
+buttonOpenPopupAddPlace.addEventListener('click', function () {
+  popupAddPlaceButton.classList.add('popup__submit-button_disabled');
+  popupAddPlaceButton.setAttribute('disabled', 'true');
   openPopup(popupAddPlace);
 });
 
