@@ -13,10 +13,6 @@
   outline: 0;
 }
 
-.popup__input:invalid {
-  border-bottom: 1px solid rgb(255, 0, 0);
-}
-
 @media screen and (max-width: 767px) {
   .popup__input {
     padding-bottom: 8px;
