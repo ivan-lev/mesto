@@ -106,7 +106,19 @@ const showPhotoWindow = object => {
 // ..................... СЛУШАТЕЛИ ..................... //
 
 // Открыть окно редактирования данных юзера и отобразить актуальные данные
+// Сбрасываем состояния элементов формы, так как данные юзера валидны
 buttonOpenEditProfile.addEventListener('click', function () {
+  const inputList = Array.from(popupEditProfile.querySelectorAll('.popup__input'));
+  const errorList = Array.from(popupEditProfile.querySelectorAll('.popup__error'));
+  const profileSubmitButton = popupEditProfile.querySelector('.popup__submit-button');
+  inputList.forEach(inputElement => inputElement.classList.remove('popup__input_type_error'));
+  errorList.forEach(errorElement => errorElement.classList.remove('popup__error_visible'));
+  profileSubmitButton.classList.remove('popup__submit-button_disabled');
+
+  //   errorList.forEach((errorElement) => {
+  //     item.classList.add('text_is-active');
+  //  });
+
   openPopup(popupEditProfile);
   newUserName.value = currentUserName.textContent;
   newUserDescription.value = currentUserDescription.textContent;
