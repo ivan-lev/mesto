@@ -50,8 +50,8 @@ const closePopup = popup => {
 
 // Фенкция закрытия окна по нажатию Esc
 const closePopupByEsc = event => {
-  const openedPopup = document.querySelector('.popup_opened');
   if (event.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
   }
 };
