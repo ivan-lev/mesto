@@ -25,16 +25,16 @@
 @import url('../blocks/profile/__description/profile__description.css');
 @import url('../blocks/profile/__add-photo-button/profile__add-photo-button.css');
 
-/* ======= ELEMENTS STYLES ======= */
+/* ======= cards STYLES ======= */
 
-@import url('../blocks/elements/elements.css');
-@import url('../blocks/elements/__card/elements__card.css');
-@import url('../blocks/elements/__photo/elements__photo.css');
-@import url('../blocks/elements/__description/elements__description.css');
-@import url('../blocks/elements/__photo-name/elements__photo-name.css');
-@import url('../blocks/elements/__like-button/elements__like-button.css');
-@import url('../blocks/elements/__like-button/_active/elements__like-button_active.css');
-@import url('../blocks/elements/__del-button/elements__del-button.css');
+@import url('../blocks/cards/cards.css');
+@import url('../blocks/cards/__card/cards__card.css');
+@import url('../blocks/cards/__photo/cards__photo.css');
+@import url('../blocks/cards/__description/cards__description.css');
+@import url('../blocks/cards/__photo-name/cards__photo-name.css');
+@import url('../blocks/cards/__like-button/cards__like-button.css');
+@import url('../blocks/cards/__like-button/_active/cards__like-button_active.css');
+@import url('../blocks/cards/__del-button/cards__del-button.css');
 
 /* ======= POPUP STYLES ======= */
 

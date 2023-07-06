@@ -8,8 +8,8 @@ const newUserDescription = document.querySelector('.popup__input_type_descriptio
 // ======= Переменные, относящиеся к созданию фотокарточки на странице ======= //
 const cardTemplate = document.querySelector('#card-template');
 const cardTemplateContent = cardTemplate.content;
-const cardTemplateElement = cardTemplateContent.querySelector('.elements__card');
-const cardsSection = document.querySelector('.elements');
+const cardTemplateElement = cardTemplateContent.querySelector('.cards__card');
+const cardsSection = document.querySelector('.cards');
 
 // ======= Переменные, относящиеся к поп-апу редактирования данных юзера ======= //
 const popupEditProfile = document.querySelector('#popup-edit-profile');
@@ -68,10 +68,10 @@ const closePopupByOverlay = event => {
 // создать слкшатели на удаление, лайк
 const createCard = card => {
   const newCard = cardTemplateElement.cloneNode(true);
-  const newCardImage = newCard.querySelector('.elements__photo');
-  const newCardName = newCard.querySelector('.elements__photo-name');
-  const deleteCardButton = newCard.querySelector('.elements__del-button');
-  const likeButton = newCard.querySelector('.elements__like-button');
+  const newCardImage = newCard.querySelector('.cards__photo');
+  const newCardName = newCard.querySelector('.cards__photo-name');
+  const deleteCardButton = newCard.querySelector('.cards__del-button');
+  const likeButton = newCard.querySelector('.cards__like-button');
   newCardImage.src = card.link;
   newCardImage.alt = card.name;
   newCardName.textContent = card.name;
@@ -79,12 +79,12 @@ const createCard = card => {
   // Удалить фотокарточку
   deleteCardButton.addEventListener('click', function () {
     cardsSection.removeChild(newCard);
-    //deleteCardButton.closest('.elements__card').remove(); - тоже рабочий метод
+    //deleteCardButton.closest('.cards__card').remove(); - тоже рабочий метод
   });
 
   // Слушатель лайка фотокарточки
   likeButton.addEventListener('click', function () {
-    likeButton.classList.toggle('elements__like-button_active');
+    likeButton.classList.toggle('cards__like-button_active');
   });
 
   // Слушатель открытия поп-апа картинки

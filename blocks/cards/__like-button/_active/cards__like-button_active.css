@@ -1,4 +1,4 @@
-.elements__like-button_active {
+.cards__like-button_active {
   opacity: 1;
   background: url('../../../../images/button-heart_active.svg');
 }
