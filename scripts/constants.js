@@ -1,26 +1,26 @@
-const initialCards = [
+export const initialCards = [
   {
-    name: 'Двуглавая сопка',
-    link: './images/photo-dvuglavaya-sopka.jpg'
+    imageTitle: 'Двуглавая сопка',
+    imageLink: './images/photo-dvuglavaya-sopka.jpg'
   },
   {
-    name: 'Каменная река',
-    link: './images/photo-kamennaya-reka.jpg'
+    imageTitle: 'Каменная река',
+    imageLink: './images/photo-kamennaya-reka.jpg'
   },
   {
-    name: 'Круглица',
-    link: './images/photo-kruglitsa.jpg'
+    imageTitle: 'Круглица',
+    imageLink: './images/photo-kruglitsa.jpg'
   },
   {
-    name: 'Откликной гребень',
-    link: './images/photo-otkliknoy-greben.jpg'
+    imageTitle: 'Откликной гребень',
+    imageLink: './images/photo-otkliknoy-greben.jpg'
   },
   {
-    name: 'Вид с Круглицы',
-    link: './images/photo-vid-s-kruglitsi.jpg'
+    imageTitle: 'Вид с Круглицы',
+    imageLink: './images/photo-vid-s-kruglitsi.jpg'
   },
   {
-    name: 'Вид с метеостанции',
-    link: './images/photo-vid-s-meteostansii.jpg'
+    imageTitle: 'Вид с метеостанции',
+    imageLink: './images/photo-vid-s-meteostansii.jpg'
   }
 ];

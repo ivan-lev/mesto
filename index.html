@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css" />
-    <script src="./scripts/constants.js" defer></script>
-    <script src="./scripts/index.js" defer></script>
+    <script type="module" src="./scripts/constants.js" defer></script>
+    <script type="module" src="./scripts/index.js" defer></script>
+    <script type="module" src="./scripts/Card.js" defer></script>
     <script src="./scripts/validate.js" defer></script>
   </head>
   <body class="page">
@@ -79,7 +80,7 @@
                 placeholder="Название"
                 id="photo-name"
                 name="photo-name"
-                class="popup__input popup__input_type_photo-name"
+                class="popup__input popup__input_type_photo-title"
                 required
                 minlength="2"
                 maxlength="30"
@@ -92,7 +93,7 @@
                 placeholder="Ссылка на картинку"
                 id="photo-link"
                 name="photo-link"
-                class="popup__input popup__input_type_photo-url"
+                class="popup__input popup__input_type_photo-link"
                 required
               />
               <span class="popup__error photo-link-error"></span>
@@ -133,9 +134,9 @@
 
     <template id="card-template">
       <div class="cards__card">
-        <img src="#" alt="" class="cards__photo" />
+        <img src="#" alt="" class="cards__card-image" />
         <div class="cards__description">
-          <h2 class="cards__photo-name"></h2>
+          <h2 class="cards__card-title"></h2>
           <button type="button" class="button cards__like-button"></button>
         </div>
         <button type="button" class="button cards__del-button"></button>
