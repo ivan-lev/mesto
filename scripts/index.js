@@ -11,11 +11,8 @@ const newUserName = document.querySelector('.popup__input_type_name');
 const newUserDescription = document.querySelector('.popup__input_type_description');
 
 // ======= Переменные, относящиеся к созданию фотокарточки на странице ======= //
-export const cardTemplateElement = document
-  .querySelector('#card-template')
-  .content.querySelector('.cards__card');
-
 export const cardsSection = document.querySelector('.cards');
+const cardTemplate = document.querySelector('#card-template').content.querySelector('.cards__card');
 
 // ======= Переменные, относящиеся к поп-апу редактирования данных юзера ======= //
 const popupEditProfile = document.querySelector('#popup-edit-profile');
@@ -112,7 +109,7 @@ editProfileForm.addEventListener('submit', function (event) {
 formAddPlace.addEventListener('submit', function (event) {
   event.preventDefault();
   const newCardData = { imageTitle: newPlaceTitle.value, imageLink: newPlaceLink.value };
-  const card = new Card(newCardData, '.card-template');
+  const card = new Card(newCardData, cardTemplate);
   const cardElement = card.generateCard();
   cardsSection.prepend(cardElement);
   closePopup(popupAddPlace);
@@ -135,7 +132,7 @@ buttonOpenPopupAddPlace.addEventListener('click', function () {
 
 // генерируем дефолтные карточки
 initialCards.forEach(function (item) {
-  const card = new Card(item, '.card-template');
+  const card = new Card(item, cardTemplate);
   const cardElement = card.generateCard();
   cardsSection.prepend(cardElement);
 });
