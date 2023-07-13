@@ -7,18 +7,19 @@ export class Card {
     this._template = template;
   }
 
-  // находим шаблон карточки и возвращаем его
+  // приватный метод - возвращает шаблон карточки
   _getTemplate() {
     return this._template.cloneNode(true);
   }
 
+  // приватный метод - создаёт слушатели, открывающие попап с изображением
   _setEventListeners() {
-    // слушатель открытия попапа
     this._element.querySelector('.cards__card-image').addEventListener('click', () => {
       showPhotoWindow({ link: this._imageLink, name: this._imageTitle });
     });
   }
 
+  // публичный метод - генерирует новую карточку
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
