@@ -34,20 +34,6 @@ const popupAddPlaceButton = document.querySelector('.popup__add-photo-button');
 
 // ..................... ФУНКЦИИ ..................... //
 
-// Открыть поп-ап и добавить слушатели его закрытия по Esc и на оверлее
-const openPopup = popup => {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupByEsc);
-  document.addEventListener('mouseup', closePopupByOverlay);
-};
-
-// Закрыть попап и снять слушатели его закрытия по Esc и на оверлее
-const closePopup = popup => {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupByEsc);
-  document.removeEventListener('mouseup', closePopupByOverlay);
-};
-
 // Функция закрытия окна по нажатию Esc
 const closePopupByEsc = event => {
   if (event.key === 'Escape') {
@@ -64,7 +50,21 @@ const closePopupByOverlay = event => {
   }
 };
 
-// Открыть поп-ап с изображением
+// Функция закрытия попапа и снятия слушателей по Esc и на оверлее
+const closePopup = popup => {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEsc);
+  document.removeEventListener('mouseup', closePopupByOverlay);
+};
+
+// Функция открытия попапа и добавления слушателей закрытия по Esc и на оверлее
+const openPopup = popup => {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEsc);
+  document.addEventListener('mouseup', closePopupByOverlay);
+};
+
+// Функция открытия поп-апа с изображением
 export const showPhotoWindow = object => {
   photoToDisplay.src = object.link;
   photoToDisplay.alt = object.name;
@@ -72,22 +72,12 @@ export const showPhotoWindow = object => {
   openPopup(popupPhotoWindow);
 };
 
-// ..................... СЛУШАТЕЛИ ..................... //
-
-// вешаем на все кнопки закрытия слушатель закрытия попапа
-closeButtonsList.forEach(closeButton =>
-  closeButton.addEventListener('click', function () {
-    const popupToClose = document.querySelector('.popup_opened');
-    closePopup(popupToClose);
-  })
-);
-
-// Открыть окно редактирования данных юзера и отобразить актуальные данные
-// Сбрасываем состояния элементов формы, так как данные юзера валидны
-buttonOpenEditProfile.addEventListener('click', function () {
+// функция открытия поп-апа редактирования профиля
+const openProfilePopup = () => {
   const inputList = Array.from(popupEditProfile.querySelectorAll('.popup__input'));
   const errorList = Array.from(popupEditProfile.querySelectorAll('.popup__error'));
   const profileSubmitButton = popupEditProfile.querySelector('.popup__submit-button');
+
   inputList.forEach(inputElement => inputElement.classList.remove('popup__input_type_error'));
   errorList.forEach(errorElement => errorElement.classList.remove('popup__error_visible'));
   profileSubmitButton.classList.remove('popup__submit-button_disabled');
@@ -95,30 +85,17 @@ buttonOpenEditProfile.addEventListener('click', function () {
   openPopup(popupEditProfile);
   newUserName.value = currentUserName.textContent;
   newUserDescription.value = currentUserDescription.textContent;
-});
+};
 
-// Сохранить на странице новые данные юзера
-editProfileForm.addEventListener('submit', function (event) {
-  event.preventDefault();
+// функция сохранения новых данных пользователя
+const saveProfileData = () => {
   currentUserName.textContent = newUserName.value;
   currentUserDescription.textContent = newUserDescription.value;
   closePopup(popupEditProfile);
-});
+};
 
-// Форма добавления нового места
-formAddPlace.addEventListener('submit', function (event) {
-  event.preventDefault();
-  const newCardData = { imageTitle: newPlaceTitle.value, imageLink: newPlaceLink.value };
-  const card = new Card(newCardData, cardTemplate);
-  const cardElement = card.generateCard();
-  cardsSection.prepend(cardElement);
-  closePopup(popupAddPlace);
-  formAddPlace.reset();
-});
-
-// Слушатель открытия добавления нового места
-// Если поля формы невалидны, то деактивируем кнопку и открываем поп-ап
-buttonOpenPopupAddPlace.addEventListener('click', function () {
+// функция открытия поп-апа добавления карточки
+const openPlacePopup = () => {
   const inputList = Array.from(formAddPlace.querySelectorAll('.popup__input'));
   const validityOfForm = inputList.every(function (input) {
     return input.validity.valid;
@@ -128,10 +105,47 @@ buttonOpenPopupAddPlace.addEventListener('click', function () {
     popupAddPlaceButton.setAttribute('disabled', 'true');
   }
   openPopup(popupAddPlace);
+};
+
+// функция добавления новой карточки
+const addPlace = () => {
+  const newCardData = { imageTitle: newPlaceTitle.value, imageLink: newPlaceLink.value };
+  const card = new Card(newCardData, cardTemplate);
+  const cardElement = card.generateCard();
+  cardsSection.prepend(cardElement);
+  closePopup(popupAddPlace);
+  formAddPlace.reset();
+};
+
+// ..................... СЛУШАТЕЛИ ..................... //
+
+// вешаем на все кнопки закрытия попапа слушатели
+closeButtonsList.forEach(closeButton =>
+  closeButton.addEventListener('click', function () {
+    const popupToClose = document.querySelector('.popup_opened');
+    closePopup(popupToClose);
+  })
+);
+
+// слушатель открытия поп-апа редактирования профиля
+buttonOpenEditProfile.addEventListener('click', openProfilePopup);
+
+// слушатель сохранения новых данныхпользователя
+editProfileForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  saveProfileData();
 });
 
-// вставляем текущий год в футер
-document.querySelector('.footer__current-year').textContent = new Date().getFullYear();
+// слушатель открытия поп-апа добавления карточки
+buttonOpenPopupAddPlace.addEventListener('click', openPlacePopup);
+
+// слушатель добавления новой карточки
+formAddPlace.addEventListener('submit', function (event) {
+  event.preventDefault();
+  addPlace();
+});
+
+// ..................... РАЗНОЕ ..................... //
 
 // генерируем дефолтные карточки
 initialCards.forEach(function (item) {
@@ -139,3 +153,6 @@ initialCards.forEach(function (item) {
   const cardElement = card.generateCard();
   cardsSection.prepend(cardElement);
 });
+
+// вставляем текущий год в футер
+document.querySelector('.footer__current-year').textContent = new Date().getFullYear();
