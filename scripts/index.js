@@ -130,6 +130,9 @@ buttonOpenPopupAddPlace.addEventListener('click', function () {
   openPopup(popupAddPlace);
 });
 
+// вставляем текущий год в футер
+document.querySelector('.footer__current-year').textContent = new Date().getFullYear();
+
 // генерируем дефолтные карточки
 initialCards.forEach(function (item) {
   const card = new Card(item, cardTemplate);
